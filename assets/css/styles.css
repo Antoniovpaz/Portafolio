@@ -1,0 +1,299 @@
+body {
+  color: #111; /* Texto negro por defecto */
+}
+
+.cs-dark {
+  color: #ECEFF4; /* Texto blanco en secciones oscuras */
+}
+
+.cs-dark h1,
+.cs-dark h2,
+.cs-dark h3,
+.cs-dark p,
+.cs-dark li,
+.cs-dark strong {
+  color: #fff; /* Asegura que todos los textos dentro de dark sean blancos */
+}
+
+:root {
+  --bg: #0b0c10;
+  --bg-alt: #111217;
+  --text: #111;
+  --muted: #383c43;
+  --accent: #7dd3fc;
+  --card: #151821;
+  --border: #2a2f3a;
+  --shadow: 0 10px 30px rgba(0,0,0,.25);
+}
+:root.light {
+  --bg: #ffffff;
+  --bg-alt: #f6f7f9;
+  --text: #1f2937;
+  --muted: #4b5563;
+  --accent: #2563eb;
+  --card: #ffffff;
+  --border: #e5e7eb;
+  --shadow: 0 10px 30px rgba(0,0,0,.08);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, 'Helvetica Neue', Arial;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+.container { width: min(1100px, 92%); margin: 0 auto; }
+
+/* Header */
+.site-header { position: sticky; top: 0; z-index: 1000; background: color-mix(in oklab, var(--bg) 85%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
+.nav { display: flex; align-items: center; gap: 1rem; padding: .8rem 0; }
+.logo { font-weight: 800; text-decoration: none; color: var(--text); border: 2px solid var(--text); padding: .2rem .5rem; border-radius: .4rem; }
+.nav-links { list-style: none; display: flex; gap: 1rem; margin-left: auto; padding: 0; }
+.nav-links a { color: var(--text); text-decoration: none; opacity: .9; }
+.nav-links a:hover { opacity: 1; text-decoration: underline; }
+.theme-toggle { margin-left: .5rem; background: var(--card); border: 1px solid var(--border); color: var(--text); padding: .4rem .6rem; border-radius: .6rem; cursor: pointer; }
+.skip-link { position: absolute; left: -9999px; }
+.skip-link:focus { left: 1rem; background: var(--accent); color: #000; padding: .4rem .6rem; border-radius: .4rem; }
+
+/* Hero */
+
+/* Hero con imagen a pantalla sin recortes */
+.hero-top{
+  width: 100%;
+  min-height: clamp(380px, 70svh, 900px);   /* alto flexible sin forzar 100vh */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  padding: clamp(16px, 3vw, 32px) 0;        /* respirito */
+  margin-top: 64px;                         /* despega de la nav sticky */
+  overflow: visible;                        /* no recortes */
+}
+
+.hero-top img{
+  width: min(1200px, 92vw);                 /* ancho responsivo con tope */
+  max-height: calc(100svh - 110px);         /* nunca más alta que la pantalla (resta nav + padding) */
+  height: auto;                             /* mantiene proporción */
+  object-fit: contain;                      /* ajusta sin cortar */
+  display: block;
+}
+
+.hero { 
+  display: grid; 
+  grid-template-columns: 1.3fr .9fr; 
+  gap: 2rem; 
+  padding: 4rem 0; 
+  align-items: center; 
+}
+
+
+
+.hero { display: grid; grid-template-columns: 1.3fr .9fr; gap: 2rem; padding: 4rem 0; align-items: center; }
+.hero h1 { font-size: clamp(2rem, 3vw + 1rem, 3rem); margin: 0 0 .5rem; }
+.lead { font-size: 1.1rem; color: var(--muted); }
+.accent { color: var(--accent); }
+.hero-photo img { width: 100%; border-radius: 1rem; box-shadow: var(--shadow); border: 1px solid var(--border); }
+
+.cta-group { display: flex; gap: .8rem; margin: 1rem 0; }
+.btn { display: inline-block; text-decoration: none; padding: .7rem 1rem; border-radius: .7rem; border: 1px solid var(--border); background: var(--card); color: var(--text); }
+.btn:hover { transform: translateY(-1px); }
+.btn.primary { background: var(--accent); color: #0a0a0a; border-color: transparent; }
+.btn.small { padding: .45rem .75rem; font-size: .9rem; }
+.btn.outline { background: transparent; }
+
+.meta { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 1rem; color: var(--muted); }
+
+/* Secciones */
+.section { padding: 3.5rem 0; }
+.section h2 { font-size: 1.8rem; margin: 0 0 1rem; }
+
+/* Cards */
+.grid.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.2rem; }
+.card { background: var(--card); border: 1px solid var(--border); border-radius: 1rem; overflow: hidden; box-shadow: var(--shadow); display: flex; flex-direction: column; }
+.card img { width: 100%; aspect-ratio: 16/9; object-fit: cover; }
+.card-body { padding: 1rem; display: flex; flex-direction: column; gap: .7rem; }
+.tags { list-style: none; display: flex; flex-wrap: wrap; gap: .4rem; padding: 0; margin: .2rem 0 0; }
+.tags li { font-size: .8rem; background: var(--bg-alt); border: 1px solid var(--border); padding: .2rem .5rem; border-radius: .5rem; color: var(--muted); }
+.actions { display: flex; gap: .5rem; margin-top: .2rem; }
+
+/* Skills */
+.grid.skills { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; }
+.grid.skills h3 { margin-bottom: .4rem; }
+
+/* Timeline */
+.timeline { list-style: none; padding: 0; border-left: 2px solid var(--border); margin-left: .6rem; }
+.timeline li { display: grid; grid-template-columns: 160px 1fr; gap: 1rem; padding-left: 1rem; position: relative; }
+.timeline li::before { content: ''; position: absolute; left: -11px; top: .6rem; width: .8rem; height: .8rem; border-radius: 50%; background: var(--accent); }
+.time { color: var(--muted); }
+
+/* Form */
+.contact-form { max-width: 640px; }
+.form-row { display: grid; gap: .35rem; margin-bottom: .9rem; }
+input, textarea { width: 100%; padding: .7rem .8rem; background: var(--bg-alt); border: 1px solid var(--border); border-radius: .6rem; color: var(--text); }
+input:focus, textarea:focus { outline: 2px solid var(--accent); border-color: transparent; }
+
+/* Footer */
+.site-footer { border-top: 1px solid var(--border); padding: 1.5rem 0; color: var(--muted); text-align: center; }
+
+/* Responsive */
+@media (max-width: 900px) {
+  .hero { grid-template-columns: 1fr; }
+  .nav-links { display: none; }
+}
+
+/* ===== Pills de navegación de colores ===== */
+.nav-colored{
+  display:flex;
+  flex-wrap:wrap;
+  gap:.6rem;
+  justify-content:center;
+  margin: .75rem auto .25rem;
+}
+
+/* ===== Pills de navegación (UPocket) ===== */
+.nav-colored{
+  display:flex;
+  flex-wrap:wrap;
+  gap:.6rem;
+  margin: 1rem auto 0;
+  justify-content:center;
+}
+
+.nav-pill{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:.55rem 1rem;
+  border-radius:20px;
+  font-size:.9rem;
+  font-weight:650;
+  color:#fff !important;
+  text-decoration:none;
+  line-height:1;
+  box-shadow: 0 1px 0 rgba(0,0,0,.06), 0 6px 18px rgba(0,0,0,.06);
+  transition: transform .2s ease, opacity .2s ease, filter .2s ease;
+}
+.nav-pill:hover{ transform: translateY(-2px); filter: brightness(1.03); }
+
+/* Paleta */
+.nav-pill.pink   { background:#FE398B; }
+.nav-pill.purple { background:#9059FD; }
+.nav-pill.indigo { background:#6889FF; }
+.nav-pill.blue   { background:#5AAFFF; }
+.nav-pill.cyan   { background:#9AD7C9; }
+.nav-pill.yellow { background:#FFBB45; }
+.nav-pill.orange { background:#FF9633; }
+.nav-pill.green  { background:#89C04B; }
+.nav-pill.back   { background:#333;    }
+
+/* === Fondo blanco por defecto y oscuro sólo donde se pida === */
+body{ background:#272727 !important; }
+
+.cs-sec{ 
+  background:#fff;           /* Secciones normales: blanco */
+  position: relative; 
+  z-index: 0;
+}
+
+/* Evita que se vea el color del body en los “huecos” entre secciones */
+.cs-sec + .cs-sec{ margin-top:0; }
+
+/* Secciones oscuras explícitas */
+.cs-sec.cs-dark{
+  background:#212121; 
+  color:#ECEFF4;
+}
+.cs-sec.cs-dark .cs-panel{ background:#2A2A2A; border-color:#333; }
+.cs-sec.cs-dark .muted,
+.cs-sec.cs-dark p, 
+.cs-sec.cs-dark li{ color:#C9D0D8; }
+
+/* ---- Corrección: evitar franja blanca en "User Flow" dentro de secciones oscuras ---- */
+.cs-dark .cs-wrap.cs-sec{ 
+  background:#212121 !important;  /* mismo fondo que la sección oscura */
+}
+
+/* Opcional: hacer que el placeholder no sea blanco */
+.cs-dark .cs-card-ph{
+  background:#2A2A2A !important;  /* o transparent si no quieres bloque */
+  border-color:#ffffff;
+}
+
+/* === Overrides para el HERO (Case Study) === */
+
+/* 1) Si en el HTML existe .cs-hero con un panel gris, fuerzalo a blanco */
+.cs-hero{
+  background:#fff !important;   /* quita el gris */
+  border-bottom: none !important;/* quita la línea gris */
+  border-radius: 0 !important;   /* sin esquinas redondeadas */
+}
+
+/* Si tu HTML trae un fondo decorativo (.cs-hero-bg) apágalo */
+.cs-hero-bg{ display:none !important; }
+
+/* 2) Por si el fondo venía de una variable local, la fijamos en blanco también */
+:root{
+  --upocket-panel: #fff !important;
+}
+
+/* ==== Glow responsivo centrado, sin sangrar bordes ==== */
+.cs-sec{ position: relative; overflow: hidden; }
+
+/* Variables de acolchado (márgenes internos del glow) */
+.cs-sec{ --glow-pad: clamp(24px, 5vw, 80px); }
+
+/* Lienzo del glow: SIEMPRE centrado y con máximos para no invadir esquinas */
+.cs-sec::before{
+  content:"";
+  position:absolute;
+  left:50%; top:50%;
+  transform:translate(-50%,-50%);
+  pointer-events:none; z-index:-1;
+
+  /* El glow ocupa como máximo este tamaño,
+     pero NUNCA más que (ancho/alto de la sección - acolchado) */
+  width:  min(1200px, calc(100% - var(--glow-pad)*2));
+  height: min(520px,  calc(100% - var(--glow-pad)*2));
+
+  border-radius: clamp(24px, 4vw, 60px);
+  filter: blur(18px);
+  opacity: 0.9;
+
+  /* Paleta clara (pasteles) */
+  background:
+    radial-gradient(40% 35% at 20% 25%, rgba(255,202,138,.55) 0%, transparent 60%),
+    radial-gradient(45% 40% at 80% 23%, rgba(154,133,255,.50) 0%, transparent 65%),
+    radial-gradient(50% 45% at 30% 85%, rgba(102,171,255,.45) 0%, transparent 60%),
+    radial-gradient(45% 40% at 85% 80%, rgba(252,147,200,.45) 0%, transparent 60%);
+}
+
+/* Variante oscura: menos intensidad y más blur para que no distraiga */
+.cs-sec.cs-dark::before{
+  filter: blur(26px);
+  opacity: 0.8;
+  background:
+    radial-gradient(38% 32% at 24% 20%, rgba(124, 90,255,.24) 0%, transparent 65%),
+    radial-gradient(44% 38% at 76% 28%, rgba(88, 28,135,.20) 0%, transparent 65%),
+    radial-gradient(46% 40% at 28% 80%, rgba(37,  99,235,.18) 0%, transparent 60%),
+    radial-gradient(42% 36% at 80% 78%, rgba(236, 72,153,.20) 0%, transparent 60%);
+}
+
+/* Secciones MUY compactas: reduce aún más el lienzo y la intensidad */
+.cs-sec:where(:has(.cs-h2) )::before{
+  /* pequeño “empujón” extra en áreas con tarjetas densas */
+  width:  min(1100px, calc(100% - var(--glow-pad)*2.4));
+  height: min(460px,  calc(100% - var(--glow-pad)*2.4));
+}
+.cs-sec.cs-dark:where(:has(.cs-3col), :has(.cs-grid-cards))::before{
+  opacity:.72;
+}
+
+/* En móviles: glows más compactos para evitar saturar */
+@media (max-width: 720px){
+  .cs-sec{ --glow-pad: clamp(20px, 7vw, 56px); }
+  .cs-sec::before{ width: calc(100% - var(--glow-pad)*2.6); height: min(420px, calc(100% - var(--glow-pad)*2.6)); }
+}
+
+#system.cs-dark::before{ opacity:.66; }

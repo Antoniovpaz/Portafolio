@@ -1,0 +1,452 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>UPocket — Case Study</title>
+
+  <!-- Tipografía igual que en la home -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+  <!-- Tus estilos globales -->
+    <!-- Tus estilos globales (usa ruta relativa para que sirva en local) -->
+  <link rel="stylesheet" href="assets/css/styles.css" />
+
+  <!-- Fuerza la tipografía de la home -->
+  <style>
+    html, body {
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Ubuntu, Cantarell, 'Helvetica Neue', Arial, sans-serif;
+    }
+  </style>
+
+  <!-- NAV PILLS (dentro de <style>, no en el <body>) -->
+  <style>
+    .site-header .nav-colored{
+      display:flex; flex-wrap:wrap; gap:.6rem;
+      margin:1rem auto 0; justify-content:center;
+    }
+    .site-header .nav-colored .nav-pill{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:.55rem 1rem; border-radius:14px; font-size:.9rem; font-weight:650;
+      color:#111; text-decoration:none; line-height:1;
+      box-shadow:0 1px 0 rgba(0,0,0,.06), 0 6px 18px rgba(0,0,0,.06);
+      transition:transform .2s ease, filter .2s ease, opacity .2s ease;
+    }
+    .site-header .nav-colored .nav-pill:hover{
+      transform:translateY(-2px); filter:brightness(1.04);
+    }
+    /* Colores (tu paleta) */
+    .site-header .nav-colored .nav-pill.pink   { background:#FE398B; }
+    .site-header .nav-colored .nav-pill.purple { background:#9059FD; }
+    .site-header .nav-colored .nav-pill.indigo { background:#6889FF; }
+    .site-header .nav-colored .nav-pill.blue   { background:#5AAFFF; }
+    .site-header .nav-colored .nav-pill.cyan   { background:#9AD7C9; }
+    .site-header .nav-colored .nav-pill.orange { background:#FF9633; }
+    .site-header .nav-colored .nav-pill.yellow { background:#FFBB45; }
+    .site-header .nav-colored .nav-pill.green  { background:#89C04B; }
+    .site-header .nav-colored .nav-pill.back   { background:#333; color:#fff; }
+  </style>
+
+  <style>
+    /* ====== Estilos locales para esta página ====== */
+    :root{
+      --upocket-accent: #5AAFFF;   /* Main Blue de tu paleta */
+      --upocket-panel: #f5f6f8;    /* Panel claro para el hero */
+    }
+
+    .cs-wrap { width:min(1120px,92%); margin:0 auto; }
+    .cs-sec { padding: clamp(2.2rem, 4vw, 3rem) 0; }
+
+    .cs-kicker{ text-transform: uppercase; letter-spacing:.08em; color: var(--muted); font-size:.8rem; }
+    .cs-h2{ font-size: clamp(1.5rem, 2.6vw, 1.9rem); margin: 0 0 .6rem; }
+    .muted{ color: var(--muted); }
+
+    .cs-2col{ display:grid; gap:1.2rem; grid-template-columns: 1.1fr .9fr; align-items:start; }
+    .cs-3col{ display:grid; gap:1rem; grid-template-columns: repeat(3,1fr); }
+    .cs-4col{ display:grid; gap:1rem; grid-template-columns: repeat(4,1fr); }
+
+    .cs-panel{
+      background: #fff; border:1px solid var(--border); border-radius: 16px; box-shadow: var(--shadow);
+      padding: clamp(1rem, 2.5vw, 1.4rem);
+    }
+    .cs-list{ margin: .4rem 0 0; padding-left: 1.1rem; }
+    .cs-list li{ margin:.25rem 0; }
+
+    .cs-chip{ border:1px solid var(--border); border-radius:999px; padding:.35rem .6rem; font-size:.85rem; background:#fff; }
+    .cs-grid-cards{ display:grid; gap:1rem; grid-template-columns: repeat(2,1fr); }
+    .cs-card-ph{ aspect-ratio: 16/10; border-radius: 14px; background: linear-gradient(#fafafa,#eee); border:1px dashed #d1d5db; }
+
+    /* HERO */
+    .cs-hero {
+      position: relative;
+      background: var(--upocket-panel);
+      overflow: hidden;
+    }
+    .cs-hero-inner{
+      display:grid; gap:2rem; grid-template-columns: 1.2fr .8fr;
+      align-items:center; padding: clamp(2rem, 4vw, 3rem) 0;
+    }
+    .cs-hero h1{ font-size: clamp(2rem, 3.8vw, 3rem); line-height:1.1; margin:0 0 .6rem; }
+    .cs-hero p.lead{ color: var(--muted); max-width: 60ch; }
+    .cs-badges{ display:flex; gap:.5rem; flex-wrap:wrap; margin-top: .75rem; }
+    .cs-badge{ background: var(--pill); border-radius:999px; padding:.35rem .6rem; font-size:.8rem; }
+
+
+    .cs-cta{ display:flex; gap:.7rem; flex-wrap:wrap; }
+    .cs-btn{
+      display:inline-flex; align-items:center; gap:.5rem; padding:.7rem 1rem; border-radius:999px;
+      background: var(--upocket-accent); color:#ffffff; border:1px solid transparent; text-decoration:none;
+    }
+    .cs-btn.ghost{ background:transparent; color: var(--ink); border-color: var(--ink); }
+
+    /* Sección oscura (Research + Personas) */
+    .cs-dark {
+      background: #212121;
+      color: #ffffff;
+    }
+    .cs-dark .cs-kicker { color: #ffffff; }
+    .cs-dark .cs-panel {
+      background: #2A2A2A;
+      border-color: #333;
+      color: #E7EBF0;
+    }
+    .cs-dark .muted,
+    .cs-dark p,
+    .cs-dark li { color: #ffffff; }
+    .cs-dark .cs-chip {
+      background: #262626;
+      color: #ffffff;
+      border-color: #3A3A3A;
+    }
+    .cs-dark a { color: #9CC7FF; }
+
+    /* Gradientes de transición */
+    .cs-gradient-down {
+        height: 280px; /* más alto para un difuminado largo */
+        background: linear-gradient(
+        180deg,
+        #ffffff 0%,          /* blanco arriba */
+        #aeaeae 35%,         /* sigue blanco un tramo */
+        rgba(106, 106, 106, 0) 65%,  /* transición a transparente */
+        #212121 100%         /* fondo oscuro al final */
+  );
+}
+
+    /* Responsive */
+    @media (max-width: 960px){
+      .cs-hero-inner{ grid-template-columns:1fr; }
+      .cs-2col{ grid-template-columns:1fr; }
+      .cs-3col{ grid-template-columns:1fr 1fr; }
+      .cs-grid-cards{ grid-template-columns:1fr; }
+    }
+    @media (max-width: 640px){
+      .cs-3col{ grid-template-columns:1fr; }
+      .cs-4col{ grid-template-columns:1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header compacto con regreso -->
+  <header class="site-header">
+  <nav class="nav container" aria-label="Project">
+    <div class="nav-colored">
+      <a class="nav-pill back"   href="index.html#work">← Back</a>
+      <a class="nav-pill indigo" href="#about">About</a>
+      <a class="nav-pill purple" href="#scope">Scope</a>
+      <a class="nav-pill blue"   href="#process">Process</a>
+      <a class="nav-pill cyan"   href="#research">Research</a>
+      <a class="nav-pill yellow" href="#system">Design System</a>
+      <a class="nav-pill orange" href="#screens">Screens</a>
+      <a class="nav-pill pink"   href="#outcome">Outcome</a>
+    </div>
+  </nav>
+</header>
+
+    </nav>
+  </header>
+
+<section class="hero-top">
+  <img src="assets/upocket-hero.png" alt="UPocket Hero" />
+</section>
+
+  <!-- HERO -->
+  <section class="cs-hero">
+    <div class="cs-hero-bg"></div>
+    <div class="cs-wrap cs-hero-inner">
+      <div>
+        <span class="cs-kicker">Case Study</span>
+        <h1>UPocket — Your university in your pocket</h1>
+        <p class="lead">Minimal mobile app that lets students at <em>[Your University]</em> access the essentials instantly — schedule, partial grades and key links — without digging through a slow web portal.</p>
+
+        <div class="cs-badges">
+          <span class="cs-badge">UI/UX</span>
+          <span class="cs-badge">Prototyping</span>
+          <span class="cs-badge">Figma</span>
+          <span class="cs-badge">Lottie</span>
+          <span class="cs-badge">Spline</span>
+          <span class="cs-badge">SwiftUI handoff</span>
+        </div>
+
+        <div class="cs-cta" style="margin-top:1rem">
+          <a class="cs-btn" 
+            href="https://www.figma.com/design/6W5XjguT7Tf02V7QV6t9rr/UPocket-v1.0.1?node-id=1-1040&t=FSjhFLconAwQJqEL-1" 
+            target="_blank" 
+            rel="noopener">
+            View Figma File
+            </a>
+          <a class="cs-btn ghost" href="assets/CV.pdf" target="_blank" rel="noopener">Download PDF</a>
+          <a class="cs-btn ghost" href="mailto:tuemail@ejemplo.com">Contact</a>
+        </div>
+      </div>
+
+      <!-- Placeholder de hero (pon aquí tu export de Figma si quieres) -->
+      <div class="cs-hero-ph" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about"class="cs-sec">
+    <div class="cs-wrap cs-2col">
+      <div>
+        <p class="cs-kicker">About</p>
+        <h2 class="cs-h2">Problem & Goal</h2>
+        <div class="cs-panel">
+          <p><strong>Problem.</strong> The university web portal is slow and requires several security steps just to reach simple tasks like checking today’s class schedule or partial grades — even worse on mobile.</p>
+          <p><strong>Goal.</strong> Build a <em>clear, attractive and easy-to-use</em> mobile app that surfaces the essentials in one place and feels fast on the go.</p>
+        </div>
+      </div>
+      <div>
+        <p class="cs-kicker">Role</p>
+        <h2 class="cs-h2">My Role & Tools</h2>
+        <div class="cs-panel">
+          <p><strong>Role.</strong> UI/UX Design · Prototyping.</p>
+          <p><strong>Tools.</strong> Figma (Auto-layout, variables, components), Lottie (micro-interactions), Spline (subtle backgrounds). SwiftUI-aware handoff.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCOPE -->
+  <section id="scope" class="cs-sec">
+    <div class="cs-wrap">
+      <p class="cs-kicker">Scope & Tasks</p>
+      <h2 class="cs-h2">What I set out to design</h2>
+      <div class="cs-3col">
+        <div class="cs-panel">
+          <h3>Core Features</h3>
+          <ul class="cs-list">
+            <li>Home with cards: <strong>Today’s Schedule</strong>, <strong>Grades</strong>, <strong>Shortcuts</strong>.</li>
+            <li>Schedule view with day/week switcher.</li>
+            <li>Grades with partials, “Updated” badge, trend sparkline.</li>
+          </ul>
+        </div>
+        <div class="cs-panel">
+          <h3>Objectives</h3>
+          <ul class="cs-list">
+            <li>Reduce steps to top tasks (schedule/grades).</li>
+            <li>Navigation minimal & readable on the go.</li>
+            <li>Consistent system → SwiftUI-friendly specs.</li>
+          </ul>
+        </div>
+        <div class="cs-panel">
+          <h3>Constraints</h3>
+          <ul class="cs-list">
+            <li>Started with university brand palette; later moved to a neutral, modern-minimal palette for contrast.</li>
+            <li>High information density → careful layout & type scale.</li>
+            <li>Light motion only; Lottie for micro-delight.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS (intro en blanco) -->
+  <section id="process" class="cs-sec">
+    <div class="cs-wrap">
+      <p class="cs-kicker">Process</p>
+      <h2 class="cs-h2">From discovery to final UI</h2>
+      <div class="cs-panel">
+        <p class="muted">Overview of the steps: discovery, wireframing, prototype, UI design and a small design system to ensure consistency and a smooth SwiftUI handoff.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gradiente blanco → oscuro -->
+  <div class="cs-gradient-down" aria-hidden="true"></div>
+
+  <!-- Sección oscura: Research + Personas -->
+  <section id="research" class="cs-sec cs-dark">
+    <div class="cs-wrap cs-2col">
+      <div>
+        <p class="cs-kicker">Research</p>
+        <h2 class="cs-h2">Student insights</h2>
+        <div class="cs-panel">
+          <ul class="cs-list">
+            <li>Schedule is checked multiple times per day (room changes).</li>
+            <li>Grades spike after each partial; need latest first.</li>
+            <li>Portal feels slow & buried under menus on mobile.</li>
+            <li>Shortcuts (Wi-Fi, payments, map, library) are used often but hard to find.</li>
+          </ul>
+        </div>
+      </div>
+      <div>
+        <p class="cs-kicker">Personas</p>
+        <h2 class="cs-h2">Who I designed for</h2>
+        <div class="cs-panel">
+          <p><strong>Sofía (19)</strong> — needs today’s schedule at a glance; hates deep links.</p>
+          <p><strong>Carlos (21)</strong> — wants partial grades & GPA trend; prefers dark mode.</p>
+          <p><strong>Ana (22)</strong> — needs payments & reminders; likes biometric unlock (concept).</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="cs-wrap cs-sec" style="padding-top:1.2rem">
+      <p class="cs-kicker">User Flow</p>
+      <div class="cs-panel">
+        <p><strong>Onboarding → Auth (SSO/biometric concept) → Home</strong> (Cards: Schedule · Grades · Shortcuts) → Schedule / Grades / More.</p>
+        <div class="cs-card-ph" aria-hidden="true" style="margin-top:.8rem"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- (Si quisieras volver a blanco en la sección siguiente, descomenta esta línea) -->
+  <!-- <div class="cs-gradient-up" aria-hidden="true"></div> -->
+
+  <!-- DESIGN SYSTEM -->
+  <section id="system" class="cs-sec cs-dark">
+    <div class="cs-wrap">
+      <p class="cs-kicker">Design System</p>
+      <h2 class="cs-h2">Colors, Type & Components</h2>
+      <div class="cs-3col">
+        <div class="cs-panel">
+          <h3>Colors</h3>
+          <div class="cs-4col" style="margin-top:.6rem">
+            <span class="cs-chip">Main Pink #FA398B</span>
+            <span class="cs-chip">Main Purple #9059FD</span>
+            <span class="cs-chip">Main Indigo #6889FF</span>
+            <span class="cs-chip">Main Blue #5AAFFF</span>
+            <span class="cs-chip">Main Cyan #9AD7C9</span>
+            <span class="cs-chip">Main Yellow #FFBB45</span>
+            <span class="cs-chip">Dark Blue #323644</span>
+            <span class="cs-chip">Dark Green #292E26</span>
+          </div>
+        </div>
+        <div class="cs-panel">
+          <h3>Typography</h3>
+          <p>iOS: LargeTitle / Title / Body · Android: Roboto Display/Headline/Body (sizes per platform spec).</p>
+          <p style="margin-top:.4rem"><em>Type scale:</em> H1 28–32, H2 22–24, Body 16; 8-pt spacing grid.</p>
+        </div>
+        <div class="cs-panel">
+          <h3>Iconography & Motion</h3>
+          <ul class="cs-list">
+            <li>Outline icons 2px stroke across the system.</li>
+            <li>Buttons pill, 44–48px height (touch targets).</li>
+            <li>Motion 180–240ms ease-out; Lottie only for micro-interactions.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- KEY SCREENS -->
+  <section id="screens" class="cs-sec cs-dark">
+    <div class="cs-wrap">
+      <p class="cs-kicker">Key Screens</p>
+      <h2 class="cs-h2">Light & Dark</h2>
+      <div class="cs-grid-cards">
+        <div class="cs-panel">
+          <div class="cs-card-ph" aria-hidden="true"></div>
+          <h3 style="margin:.6rem 0 0">Login</h3>
+          <p class="muted">Welcome + brand background</p>
+        </div>
+        <div class="cs-panel">
+          <div class="cs-card-ph" aria-hidden="true"></div>
+          <h3 style="margin:.6rem 0 0">Home</h3>
+          <p class="muted">Cards: Today’s Schedule · Grades · Shortcuts</p>
+        </div>
+        <div class="cs-panel">
+          <div class="cs-card-ph" aria-hidden="true"></div>
+          <h3 style="margin:.6rem 0 0">Schedule</h3>
+          <p class="muted">Day/Week switcher, room and teacher meta</p>
+        </div>
+        <div class="cs-panel">
+          <div class="cs-card-ph" aria-hidden="true"></div>
+          <h3 style="margin:.6rem 0 0">Grades</h3>
+          <p class="muted">Partials list with “Updated” badge</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS TIMELINE -->
+  <section class="cs-sec cs-dark">
+    <div class="cs-wrap">
+      <p class="cs-kicker">Process</p>
+      <h2 class="cs-h2">From discovery to final UI</h2>
+      <div class="cs-panel" style="position:relative; padding-left:1rem; border-left:2px solid var(--border);">
+        <div style="position:relative; margin:.8rem 0;"><strong>Discovery</strong> — quick interviews & portal audit</div>
+        <div style="position:relative; margin:.8rem 0;"><strong>UX Wireframing</strong> — structure, flows, states</div>
+        <div style="position:relative; margin:.8rem 0;"><strong>Clickable Prototype</strong> — Figma interactions</div>
+        <div style="position:relative; margin:.8rem 0;"><strong>UI Design</strong> — palette shift for contrast, icon set</div>
+        <div style="position:relative; margin:.8rem 0;"><strong>Design System</strong> — tokens, components, specs</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OUTCOME -->
+  <section id="outcome" class="cs-sec cs-dark">
+    <div class="cs-wrap cs-2col">
+      <div>
+        <p class="cs-kicker">Outcome</p>
+        <h2 class="cs-h2">Results & feedback</h2>
+        <div class="cs-panel">
+          <ul class="cs-list">
+            <li>Faster access to schedule/grades; students described it as “straight to the point”.</li>
+            <li>Visual consistency and motion improved perceived speed.</li>
+          </ul>
+        </div>
+      </div>
+      <div>
+        <p class="cs-kicker">Learnings</p>
+        <h2 class="cs-h2">What I’d do next</h2>
+        <div class="cs-panel">
+          <ul class="cs-list">
+            <li>Leverage components/widgets even more.</li>
+            <li>Explore color palettes earlier; collect feedback sooner.</li>
+            <li>Next features: long-press quick actions, push for grade updates, usability testing.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA final -->
+  <section class="cs-sec cs-dark">
+    <div class="cs-wrap">
+      <div class="cs-panel" style="display:flex;justify-content:space-between;gap:1rem;align-items:center;flex-wrap:wrap">
+        <div>
+          <h2 class="cs-h2">Let’s build something meaningful.</h2>
+          <p class="muted">Open to UI/UX collaborations, prototyping and SwiftUI handoff.</p>
+        </div>
+        <div class="cs-cta">
+          <a class="cs-btn" href="https://www.linkedin.com/in/antoniovp-/" target="_blank" rel="noopener">Connect on LinkedIn</a>
+          <a class="cs-btn ghost" href="index.html#work">Back to Portfolio</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© <span id="year"></span> Antonio — UI/UX Designer</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

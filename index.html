@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Antonio — UI/UX Designer & Mechatronics Engineer</title>
+  <meta name="description" content="UI/UX designer crafting modern, minimal digital experiences. Mechatronics background with code-aware design." />
+  <style>
+    /* ------- Base ------- */
+    *,*::before,*::after{box-sizing:border-box}
+    :root{
+      --bg:#ececeb;      --panel:#f5f5f4; --ink:#111827; --muted:#6b7280;
+      --card:#ffffff;    --border:#e5e7eb; --accent:#111827;
+      --pill:#e6e7e7;    --shadow:0 12px 28px rgba(0,0,0,.06);
+    }
+    html,body{height:100%}
+    body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif}
+    .container{max-width:1120px;margin-inline:auto;padding:0 20px}
+    h1,h2,h3{margin:0 0 .5rem}
+    h1{font-size:clamp(2.2rem,4.4vw,3.2rem);line-height:1.1}
+    h2{font-size:clamp(1.4rem,2.5vw,1.8rem)}
+    a{color:inherit;text-decoration:none}
+    .btn{display:inline-flex;align-items:center;gap:.55rem;padding:.7rem 1rem;border-radius:999px;background:#111827;color:#fff;border:1px solid #111827}
+    .btn.ghost{background:transparent;color:#111827;border-color:#111827}
+    .kicker{letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-size:.8rem}
+    .pill{display:inline-flex;align-items:center;gap:.4rem;background:var(--pill);border-radius:999px;padding:.35rem .6rem;font-size:.8rem}
+    .muted{color:var(--muted)}
+    .gap-1{gap:1rem}.mt-1{margin-top:1rem}.mt-2{margin-top:2rem}.mt-3{margin-top:3rem}
+    .grid{display:grid;gap:1rem}
+    .card{background:var(--card);border:1px solid var(--border);border-radius:16px;box-shadow:var(--shadow)}
+    .placeholder{background:linear-gradient(180deg,#fafafa,#eee);border:1px dashed #d1d5db}
+    /* ------- Header ------- */
+    header{position:sticky;top:0;z-index:10;background:color-mix(in oklab, var(--bg) 75%, transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--border)}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:.9rem 0}
+    .brand{font-weight:800;letter-spacing:.4px}
+    .menu{display:flex;align-items:center;gap:1rem}
+    /* ------- Hero ------- */
+    .hero{background:var(--panel);border-bottom:1px solid var(--border)}
+    .hero-wrap{display:grid;grid-template-columns:1.05fr .95fr .5fr;gap:2rem;align-items:center;padding:2.2rem 0}
+    .hero .lead{max-width:58ch}
+    .avatar-wrap{display:grid;place-items:center}
+    .avatar{width:min(420px,80%);aspect-ratio:1/1;border-radius:999px;overflow:hidden}
+    .avatar .placeholder{width:100%;height:100%;border-radius:999px}
+    .stats{display:grid;gap:1rem;justify-items:end}
+    .stat{display:grid;justify-items:end}
+    .stat b{font-size:1.2rem}
+    /* ------- Services ------- */
+    .services{grid-template-columns:repeat(4,1fr);margin-top:2rem}
+    .service{padding:1rem}
+    .service h3{font-size:1rem}
+    .service p{font-size:.9rem;color:var(--muted)}
+    /* ------- Trusted ------- */
+    .trusted{margin-top:2rem}
+    .logo-grid{grid-template-columns:repeat(5,1fr)}
+    .logo{height:54px;border-radius:10px}
+    /* ------- Split ------- */
+    .split{grid-template-columns:1.1fr .9fr;align-items:start;margin-top:2.5rem}
+    .split h2{font-size:clamp(1.6rem,3vw,2.2rem);line-height:1.1}
+    /* ------- Skills ------- */
+    .skills{grid-template-columns:repeat(3,1fr)}
+    .chip{border:1px solid var(--border);border-radius:999px;padding:.35rem .6rem;font-size:.85rem;color:#111827;background:#fff}
+    /* ------- Portfolio ------- */
+    .portfolio-grid{grid-template-columns:repeat(3,1fr);margin-top:1rem}
+    .work{display:flex;flex-direction:column;overflow:hidden}
+    .work .ph{aspect-ratio:16/10;border-radius:14px;margin:10px}
+    .work .body{padding:0 12px 16px}
+    .tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.3rem}
+    .tag{font-size:.75rem;border:1px solid var(--border);padding:.2rem .5rem;border-radius:999px;color:var(--muted)}
+    /* ------- Experience ------- */
+    .timeline{border-left:2px solid var(--border);padding-left:1rem}
+    .item{position:relative;margin:.6rem 0}
+    .item::before{content:'';position:absolute;left:-.55rem;top:.45rem;width:.8rem;height:.8rem;border-radius:50%;background:#111827}
+    .time{color:var(--muted);font-size:.9rem}
+    /* ------- Footer ------- */
+    footer{border-top:1px solid var(--border);margin-top:3rem}
+    footer .container{display:flex;justify-content:space-between;flex-wrap:wrap;padding:1.2rem 20px;color:var(--muted)}
+    /* ------- Responsive ------- */
+    @media (max-width:1000px){
+      .hero-wrap{grid-template-columns:1fr 1fr}
+      .stats{display:none}
+      .services{grid-template-columns:repeat(2,1fr)}
+      .split{grid-template-columns:1fr}
+      .skills{grid-template-columns:1fr 1fr}
+      .portfolio-grid{grid-template-columns:repeat(2,1fr)}
+    }
+    @media (max-width:640px){
+      .hero-wrap{grid-template-columns:1fr}
+      .services{grid-template-columns:1fr}
+      .skills{grid-template-columns:1fr}
+      .portfolio-grid{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container nav">
+      <div class="brand">ANTONIO</div>
+      <div class="menu">
+        "pill" href="#work">View Work</a>
+        <a class="pill" href="https://www.linkedin.com/in/antoniovp-/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container hero-wrap">
+      <div>
+        <span class="kicker">Hi, I’m Antonio</span>
+        <h1>A <strong>UI/UX Designer</strong> with an engineering mindset</h1>
+        <p class="lead muted mt-1">
+          Bridging design and engineering to create intuitive digital experiences. 
+          I turn complex ideas into simple, innovative design.
+        </p>
+        <div class="gap-1 mt-2" style="display:flex;flex-wrap:wrap">
+          <a class="btn" href="#work">View Work</a>
+          <a class="btn ghost" href="CV.pdf" target="_blank" rel="noopener">Download CV</a>
+        </div>
+      </div>
+      <div class="avatar-wrap">
+        <div class="avatar"><div class="placeholder"></div></div>
+      </div>
+      <aside class="stats">
+        <div class="stat"><b>Apps & Digital Experiences</b><span class="muted">Modern, minimal UI</span></div>
+        <div class="stat"><b>Mechatronics + Code</b><span class="muted">Design with build-awareness</span></div>
+        <div class="stat"><b>Open to Collab</b><span class="muted">UI/UX · Product · Handoff</span></div>
+      </aside>
+    </div>
+
+    <div class="container mt-2 grid services">
+      <div class="card service"><h3>User-Centered Design</h3><p>Research, flows and interface decisions guided by user needs.</p></div>
+      <div class="card service"><h3>Modern Minimal UI</h3><p>Clean visuals, strong hierarchy, accessible components.</p></div>
+      <div class="card service"><h3>Rapid Prototyping</h3><p>Wireframes, interactive prototypes and quick iteration.</p></div>
+      <div class="card service"><h3>Design Systems & Handoff</h3><p>Components, tokens and clear specs for smooth delivery.</p></div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="container grid split">
+    <h2>Crafting intuitive products with a modern, minimal approach</h2>
+    <div class="muted">
+      <p>I’m a UI/UX designer with a mechatronics background. I understand how products are designed and how they’re built — from user flows and systems to actual code.</p>
+      <p>My focus is apps and interactive digital experiences. I care about clarity, usability and clean visual language — turning complexity into meaningful, innovative design.</p>
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section class="container mt-3">
+    <h2>Skills & Tools</h2>
+    <div class="grid skills mt-1">
+      <div class="card" style="padding:1rem">
+        <h3>Design</h3>
+        <span class="chip">UI/UX Design</span><span class="chip">Prototyping</span><span class="chip">Design Systems</span><span class="chip">Modern Minimal Style</span>
+      </div>
+      <div class="card" style="padding:1rem">
+        <h3>Tools</h3>
+        <span class="chip">Figma</span><span class="chip">Illustrator</span><span class="chip">Spline</span><span class="chip">Blender</span><span class="chip">Maya</span><span class="chip">Git · GitHub</span><span class="chip">Terminal</span><span class="chip">Qt (QtC / QtDS)</span>
+      </div>
+      <div class="card" style="padding:1rem">
+        <h3>Code-Aware</h3>
+        <span class="chip">Swift · SwiftUI</span><span class="chip">Python</span><span class="chip">C++ · C#</span><span class="chip">HTML · CSS</span><span class="chip">Learning: Advanced HTML/CSS/JS</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Portfolio -->
+  <section id="work" class="container mt-3">
+    <h2>Selected Work</h2>
+    <div class="grid portfolio-grid mt-1">
+      <article class="card work">
+        <div class="placeholder ph"></div>
+        <div class="body">
+          <h3>UPocket</h3>
+          <p class="muted">iOS app for finance management with SwiftUI handoff.</p>
+          <div class="tags"><span class="tag">UI/UX</span><span class="tag">iOS</span><span class="tag">SwiftUI</span></div>
+          <p class="mt-1"><a class="pill" href="upocket.html">View Project</a></p>
+        </div>
+      </article>
+      <article class="card work">
+        <div class="placeholder ph"></div>
+        <div class="body">
+          <h3>Banorte Hackathon</h3>
+          <p class="muted">Prototype for banking innovation challenge.</p>
+          <div class="tags"><span class="tag">Prototype</span><span class="tag">Hackathon</span></div>
+          <p class="mt-1"><a class="pill" href="banorte.html">View Project</a></p>
+        </div>
+      </article>
+      <article class="card work">
+        <div class="placeholder ph"></div>
+        <div class="body">
+          <h3>RRRum</h3>
+          <p class="muted">Branding + UX for a social digital platform concept.</p>
+          <div class="tags"><span class="tag">Brand</span><span class="tag">UX</span></div>
+          <p class="mt-1"><a class="pill" href="rrrum.html">View Project</a></p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- Experience / Education -->
+  <section class="container mt-3">
+    <h2>Experience & Education</h2>
+    <div class="timeline mt-1">
+      <div class="item">
+        <div class="time">Present</div>
+        <h3>UI/UX Designer — iOS Development Lab</h3>
+        <p class="muted">iOS product interfaces, user flows and SwiftUI-ready specs.</p>
+      </div>
+      <div class="item">
+        <div class="time">B.Eng.</div>
+        <h3>Mechatronics Engineering — Universidad Panamericana</h3>
+        <p class="muted">Engineering foundation applied to product and interface design.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="container mt-3">
+    <div class="card" style="padding:1.2rem 1rem">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem">
+        <div>
+          <h2>Let’s build something meaningful.</h2>
+          <p class="muted">Open to UI/UX, product and brand design collaborations.</p>
+        </div>
+        <p><a class="btn" href="https://www.linkedin.com/in/antoniovp-/" target="_blank" rel="noopener">Connect on LinkedIn</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="mt-3">
+    <div class="container">
+      <p>© <span id="year"></span> Antonio — UI/UX Designer</p>
+      <p class="muted">Modern minimal design • Apps & digital experiences • Code-aware handoff</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
