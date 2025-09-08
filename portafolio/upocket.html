@@ -1,0 +1,352 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <!-- =================== Meta =================== -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>UPocket — Case Study</title>
+
+  <!-- =================== Tipografía =================== -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+  <!-- =================== CSS global (no tocar ruta) =================== -->
+  <link rel="stylesheet" href="./public/assets/css/styles.css" />
+
+  <!-- =================== CSS específico de UPocket =================== -->
+  <link rel="stylesheet" href="./public/assets/css/upocket.css" />
+</head>
+
+<body>
+  <!-- Envolvemos todo el contenido para que los estilos scoped funcionen -->
+  <div class="up-page">
+
+    <!-- =================== Header compacto con regreso =================== -->
+    <header class="site-header">
+      <nav class="nav container" aria-label="Project">
+        <div class="nav-colored">
+          <a class="nav-pill back"   href="index.html#work">← Back</a>
+          <a class="nav-pill indigo" href="#about">About</a>
+          <a class="nav-pill purple" href="#scope">Scope</a>
+          <a class="nav-pill blue"   href="#process">Process</a>
+          <a class="nav-pill cyan"   href="#research">Research</a>
+          <a class="nav-pill yellow" href="#system">Design System</a>
+          <a class="nav-pill orange" href="#screens">Screens</a>
+          <a class="nav-pill pink"   href="#outcome">Outcome</a>
+        </div>
+      </nav>
+    </header>
+
+    <!-- =================== HERO con imagen de portada =================== -->
+    <section class="hero-top">
+      <img src="./public/assets/upocket-hero.png" alt="UPocket Hero" />
+    </section>
+
+    <!-- =================== HERO de texto =================== -->
+    <section class="cs-hero">
+      <div class="cs-hero-bg"></div>
+      <div class="cs-wrap cs-hero-inner">
+        <div>
+          <span class="cs-kicker">Case Study</span>
+          <h1>UPocket — Your university in your pocket</h1>
+          <p class="lead">
+            Minimal mobile app that lets students at <em>Universidad Panamericana</em> access the essentials instantly —
+            schedule, partial grades and key links — without digging through a slow web portal.
+          </p>
+
+          <div class="cs-badges">
+            <span class="cs-badge">UI/UX</span>
+            <span class="cs-badge">Prototyping</span>
+            <span class="cs-badge">Figma</span>
+            <span class="cs-badge">Lottie</span>
+            <span class="cs-badge">Spline</span>
+            <span class="cs-badge">SwiftUI handoff</span>
+          </div>
+
+          <div class="cs-cta" style="margin-top:1rem">
+            <a class="cs-btn"
+               href="https://www.figma.com/design/6W5XjguT7Tf02V7QV6t9rr/UPocket-v1.0.1?node-id=2-1198&t=C4uTXPD1iJv4XrOZ-1"
+               target="_blank" rel="noopener">View Figma File</a>
+            <a class="cs-btn ghost" href="./public/assets/CV.pdf" target="_blank" rel="noopener">Download PDF</a>
+            <a class="cs-btn ghost" href="mailto:tuemail@ejemplo.com">Contact</a>
+          </div>
+        </div>
+
+        <div class="cs-hero-ph" aria-hidden="true"></div>
+      </div>
+    </section>
+
+    <!-- =================== ABOUT =================== -->
+    <section id="about" class="cs-sec">
+      <div class="cs-wrap cs-2col">
+        <div>
+          <p class="cs-kicker">About</p>
+          <h2 class="cs-h2">Problem & Goal</h2>
+          <div class="cs-panel">
+            <p><strong>Problem.</strong> The university web portal is slow and requires several security steps just to reach simple tasks like checking today’s class schedule or partial grades — even worse on mobile.</p>
+            <p><strong>Goal.</strong> Build a <em>clear, attractive and easy-to-use</em> mobile app that surfaces the essentials in one place and feels fast on the go.</p>
+          </div>
+        </div>
+        <div>
+          <p class="cs-kicker">Role</p>
+          <h2 class="cs-h2">My Role & Tools</h2>
+          <div class="cs-panel">
+            <p><strong>Role.</strong> UI/UX Design · Prototyping.</p>
+            <p><strong>Tools.</strong> Figma (Auto-layout, variables, components), Lottie (micro-interactions), Spline (subtle backgrounds). SwiftUI-aware handoff.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================== SCOPE =================== -->
+    <section id="scope" class="cs-sec">
+      <div class="cs-wrap">
+        <p class="cs-kicker">Scope & Tasks</p>
+        <h2 class="cs-h2">What I set out to design</h2>
+        <div class="cs-3col">
+          <div class="cs-panel">
+            <h3>Core Features</h3>
+            <ul class="cs-list">
+              <li>Home with cards: <strong>Today’s Schedule</strong>, <strong>Grades</strong>, <strong>Shortcuts</strong>.</li>
+              <li>Schedule view with day/week switcher.</li>
+              <li>Grades with partials, “Updated” badge, trend sparkline.</li>
+            </ul>
+          </div>
+          <div class="cs-panel">
+            <h3>Objectives</h3>
+            <ul class="cs-list">
+              <li>Reduce steps to top tasks (schedule/grades).</li>
+              <li>Navigation minimal & readable on the go.</li>
+              <li>Consistent system → SwiftUI-friendly specs.</li>
+            </ul>
+          </div>
+          <div class="cs-panel">
+            <h3>Constraints</h3>
+            <ul class="cs-list">
+              <li>Started with university brand palette; later moved to a neutral, modern-minimal palette for contrast.</li>
+              <li>High information density → careful layout & type scale.</li>
+              <li>Light motion only; Lottie for micro-delight.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================== PROCESS (intro) =================== -->
+    <section id="process" class="cs-sec">
+      <div class="cs-wrap">
+        <p class="cs-kicker">Process</p>
+        <h2 class="cs-h2">From discovery to final UI</h2>
+        <div class="cs-panel">
+          <p class="muted">Overview of the steps: discovery, wireframing, prototype, UI design and a small design system to ensure consistency and a smooth SwiftUI handoff.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Transición blanco → oscuro -->
+    <div class="cs-gradient-down" aria-hidden="true"></div>
+
+    <!-- =================== Research + Personas (oscuro) =================== -->
+    <section id="research" class="cs-sec cs-dark">
+      <div class="cs-wrap cs-2col">
+        <div>
+          <p class="cs-kicker">Research</p>
+          <h2 class="cs-h2">Student insights</h2>
+          <div class="cs-panel">
+            <ul class="cs-list">
+              <li>Schedule is checked multiple times per day (room changes).</li>
+              <li>Grades spike after each partial; need latest first.</li>
+              <li>Portal feels slow & buried under menus on mobile.</li>
+              <li>Shortcuts (Wi-Fi, payments, map, library) are used often but hard to find.</li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <p class="cs-kicker">Personas</p>
+          <h2 class="cs-h2">Who I designed for</h2>
+          <div class="cs-panel">
+            <p><strong>Sofía (19)</strong> — needs today’s schedule at a glance; hates deep links.</p>
+            <p><strong>Carlos (21)</strong> — wants partial grades & GPA trend; prefers dark mode.</p>
+            <p><strong>Ana (22)</strong> — needs payments & reminders; likes biometric unlock (concept).</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="cs-wrap cs-sec" style="padding-top:1.2rem">
+        <p class="cs-kicker">User Flow</p>
+        <div class="cs-panel">
+          <p><strong>Onboarding → Auth (SSO/biometric concept) → Home</strong> (Cards: Schedule · Grades · Shortcuts) → Schedule / Grades / More.</p>
+          <div class="cs-card-ph" aria-hidden="true" style="margin-top:.8rem"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================== Design System (oscuro) =================== -->
+    <section id="system" class="cs-sec cs-dark">
+      <section id="system" class="cs-sec cs-dark">
+  <div class="cs-wrap ds">
+    <p class="cs-kicker">Design System</p>
+    <h2 class="cs-h2 ds-title">Colors &amp; Fonts for a Friendly Interface</h2>
+    <p class="ds-sub">
+      Calm base colors with accent shades and two platform fonts keep hierarchy clear and reading comfortable.
+    </p>
+
+    <!-- Fuentes -->
+    <div class="ds-fonts">
+      <!-- iOS -->
+      <article class="ds-font">
+        <h3 class="ds-font-name">iOS — SF Pro</h3>
+        <div class="ds-font-sample" style="--font:'SF Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+          <span class="ds-big">Aa</span>
+          <span class="ds-badge">Heading font</span>
+        </div>
+        <p class="ds-abc">Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm Nn Oo Pp Qq Rr Ss Tt Uu Vv Ww Xx Yy Zz</p>
+      </article>
+
+      <!-- Android -->
+      <article class="ds-font">
+        <h3 class="ds-font-name">Android — Roboto</h3>
+        <div class="ds-font-sample" style="--font:'Roboto', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+          <span class="ds-big">Aa</span>
+          <span class="ds-badge">Body text font</span>
+        </div>
+        <p class="ds-abc">Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm Nn Oo Pp Qq Rr Ss Tt Uu Vv Ww Xx Yy Zz</p>
+      </article>
+    </div>
+
+    <!-- Colores (~20) -->
+    <div class="ds-colors">
+      <h3 class="ds-block-title">Colors</h3>
+      <ul class="ds-swatches">
+        <!-- Primarios -->
+        <li class="swatch" style="--c:#FE398B"><span class="name">Main Pink</span><span class="hex">#FE398B</span></li>
+        <li class="swatch" style="--c:#9059FD"><span class="name">Main Purple</span><span class="hex">#9059FD</span></li>
+        <li class="swatch" style="--c:#6889FF"><span class="name">Main Indigo</span><span class="hex">#6889FF</span></li>
+        <li class="swatch" style="--c:#5AAFFF"><span class="name">Main Blue</span><span class="hex">#5AAFFF</span></li>
+        <li class="swatch" style="--c:#9AD7C9"><span class="name">Main Cyan</span><span class="hex">#9AD7C9</span></li>
+        <li class="swatch" style="--c:#89C04B"><span class="name">Main Green</span><span class="hex">#89C04B</span></li>
+        <li class="swatch" style="--c:#FFBB45"><span class="name">Main Yellow</span><span class="hex">#FFBB45</span></li>
+        <li class="swatch" style="--c:#FF9633"><span class="name">Main Orange</span><span class="hex">#FF9633</span></li>
+        <li class="swatch" style="--c:#FF5C5A"><span class="name">Main Red</span><span class="hex">#FF5C5A</span></li>
+        <li class="swatch" style="--c:#FFFFFF"><span class="name">Main White</span><span class="hex">#FFFFFF</span></li>
+        <!-- Lights -->
+        <li class="swatch" style="--c:#FEEBF4"><span class="name">Light Pink</span><span class="hex">#FEEBF4</span></li>
+        <li class="swatch" style="--c:#EBEFFF"><span class="name">Light Blue</span><span class="hex">#EBEFFF</span></li>
+        <li class="swatch" style="--c:#FEF2ED"><span class="name">Light Orange</span><span class="hex">#FEF2ED</span></li>
+        <li class="swatch" style="--c:#F4FFE6"><span class="name">Light Green</span><span class="hex">#F4FFE6</span></li>
+        <li class="swatch" style="--c:#F0F6FC"><span class="name">Neutral White</span><span class="hex">#F0F6FC</span></li>
+        <!-- Darks -->
+        <li class="swatch" style="--c:#34232B"><span class="name">Dark Pink</span><span class="hex">#34232B</span></li>
+        <li class="swatch" style="--c:#2B2733"><span class="name">Dark Indigo</span><span class="hex">#2B2733</span></li>
+        <li class="swatch" style="--c:#323644"><span class="name">Dark Blue</span><span class="hex">#323644</span></li>
+        <li class="swatch" style="--c:#3C312D"><span class="name">Dark Orange</span><span class="hex">#3C312D</span></li>
+        <li class="swatch" style="--c:#292E26"><span class="name">Dark Green</span><span class="hex">#292E26</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+    </section>
+
+    <!-- =================== Key Screens (oscuro) =================== -->
+    <section id="screens" class="cs-sec cs-dark">
+      <div class="cs-wrap">
+        <p class="cs-kicker">Key Screens</p>
+        <h2 class="cs-h2">Light & Dark</h2>
+        <div class="cs-grid-cards">
+          <div class="cs-panel">
+            <div class="cs-card-ph" aria-hidden="true"></div>
+            <h3 style="margin:.6rem 0 0">Login</h3>
+            <p class="muted">Welcome + brand background</p>
+          </div>
+          <div class="cs-panel">
+            <div class="cs-card-ph" aria-hidden="true"></div>
+            <h3 style="margin:.6rem 0 0">Home</h3>
+            <p class="muted">Cards: Today’s Schedule · Grades · Shortcuts</p>
+          </div>
+          <div class="cs-panel">
+            <div class="cs-card-ph" aria-hidden="true"></div>
+            <h3 style="margin:.6rem 0 0">Schedule</h3>
+            <p class="muted">Day/Week switcher, room and teacher meta</p>
+          </div>
+          <div class="cs-panel">
+            <div class="cs-card-ph" aria-hidden="true"></div>
+            <h3 style="margin:.6rem 0 0">Grades</h3>
+            <p class="muted">Partials list with “Updated” badge</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================== Process Timeline (oscuro) =================== -->
+    <section class="cs-sec cs-dark">
+      <div class="cs-wrap">
+        <p class="cs-kicker">Process</p>
+        <h2 class="cs-h2">From discovery to final UI</h2>
+        <div class="cs-panel" style="position:relative; padding-left:1rem; border-left:2px solid var(--border);">
+          <div style="position:relative; margin:.8rem 0;"><strong>Discovery</strong> — quick interviews & portal audit</div>
+          <div style="position:relative; margin:.8rem 0;"><strong>UX Wireframing</strong> — structure, flows, states</div>
+          <div style="position:relative; margin:.8rem 0;"><strong>Clickable Prototype</strong> — Figma interactions</div>
+          <div style="position:relative; margin:.8rem 0;"><strong>UI Design</strong> — palette shift for contrast, icon set</div>
+          <div style="position:relative; margin:.8rem 0;"><strong>Design System</strong> — tokens, components, specs</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================== Outcome (oscuro) =================== -->
+    <section id="outcome" class="cs-sec cs-dark">
+      <div class="cs-wrap cs-2col">
+        <div>
+          <p class="cs-kicker">Outcome</p>
+          <h2 class="cs-h2">Results & feedback</h2>
+          <div class="cs-panel">
+            <ul class="cs-list">
+              <li>Faster access to schedule/grades; students described it as “straight to the point”.</li>
+              <li>Visual consistency and motion improved perceived speed.</li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <p class="cs-kicker">Learnings</p>
+          <h2 class="cs-h2">What I’d do next</h2>
+          <div class="cs-panel">
+            <ul class="cs-list">
+              <li>Leverage components/widgets even more.</li>
+              <li>Explore color palettes earlier; collect feedback sooner.</li>
+              <li>Next features: long-press quick actions, push for grade updates, usability testing.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================== CTA final (oscuro) =================== -->
+    <section class="cs-sec cs-dark">
+      <div class="cs-wrap">
+        <div class="cs-panel" style="display:flex;justify-content:space-between;gap:1rem;align-items:center;flex-wrap:wrap">
+          <div>
+            <h2 class="cs-h2">Let’s build something meaningful.</h2>
+            <p class="muted">Open to UI/UX collaborations, prototyping and SwiftUI handoff.</p>
+          </div>
+          <div class="cs-cta">
+            <a class="cs-btn" href="https://www.linkedin.com/in/antoniovp-/" target="_blank" rel="noopener">Connect on LinkedIn</a>
+            <a class="cs-btn ghost" href="/index.html#work">Back to Portfolio</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================== Footer =================== -->
+    <footer class="site-footer">
+      <div class="container">
+        <p>© <span id="year"></span> Antonio — UI/UX Designer</p>
+      </div>
+    </footer>
+  </div><!-- cierre de .up-page -->
+
+  <!-- =================== JS mínimo =================== -->
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

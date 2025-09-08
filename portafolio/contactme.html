@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact — Antonio</title>
+
+  <!-- SF Pro con fallbacks del sistema -->
+  <style>
+    @font-face {
+      font-family: "SF Pro";
+      src: local("SF Pro Text"), local("SF Pro Display"), local(".SFNS-Regular");
+      font-weight: 400 700;
+      font-style: normal;
+      font-display: swap;
+    }
+  </style>
+
+  <!-- Tu CSS global -->
+  <link rel="stylesheet" href="/public/assets/css/styles.css" />
+
+  <!-- Estilos específicos del contact (puedes moverlos a tu styles.css si prefieres) -->
+  <style>
+    :root{
+      --c-bg:#111214;
+      --c-panel:#1c1d20;
+      --c-border:#2a2c31;
+      --c-text:#e8eaed;
+      --c-muted:#b7bbc4;
+      --c-btn:#2a2c31;
+      --c-btn-hover:#34363c;
+      --radius-xl: 28px;
+      --radius-lg: 18px;
+    }
+
+    body.contact-page{
+      background: var(--c-bg);
+      color: var(--c-text);
+      font-family:"SF Pro", -apple-system, system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    /* Header pills reutiliza tus estilos globales (.site-header, .header-pills, .pill) */
+
+    main.contact{
+      width:min(1200px,92%);
+      margin: clamp(80px, 10vh, 120px) auto 60px;
+      background: var(--c-panel);
+      border:1px solid var(--c-border);
+      border-radius: var(--radius-xl);
+      box-shadow: 0 20px 60px rgba(0,0,0,.35);
+      padding: clamp(20px, 4vw, 42px);
+    }
+
+    .contact-kicker{
+      letter-spacing:.32em;
+      color:var(--c-muted);
+      font-size:13px;
+      margin: 6px 0 18px;
+    }
+
+    .contact-title{
+      font-size:35px;
+      font-weight:800;
+      line-height:1.1;
+      margin: 0 0 10px;
+    }
+    .contact-lead{
+      font-size:15px;
+      color:var(--c-muted);
+      margin: 0 0 24px;
+      max-width: 70ch;
+    }
+
+    .contact-grid{
+      display:grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: clamp(18px, 4vw, 32px);
+      align-items:center;
+    }
+
+    /* Foto circular */
+    .contact-avatar{
+      display:grid; place-items:center;
+      width: min(360px, 92%);
+      aspect-ratio:1/1;
+      border-radius:50%;
+      background: #ff7a2a;              /* el círculo naranja del mock */
+      box-shadow: 0 16px 40px rgba(0,0,0,.45);
+      overflow:hidden;
+      margin: clamp(6px, 2vw, 8px) auto;
+      border: 6px solid rgba(0,0,0,.22);
+    }
+    .contact-avatar img{
+      width:86%; height:86%;
+      object-fit:cover;
+      border-radius:50%;
+      display:block;
+      filter: contrast(1.02);
+    }
+
+    /* Panel del formulario */
+    .form-wrap{
+      background:#151618;
+      border:1px solid var(--c-border);
+      border-radius:16px;
+      padding: clamp(14px, 3vw, 22px);
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.03);
+    }
+
+    .contact-form{
+      display:grid;
+      gap:14px;
+    }
+
+    .form-row{
+      display:grid;
+      gap:8px;
+    }
+    .form-row label{
+      font-size:13px;
+      color: var(--c-muted);
+    }
+
+    .input, .textarea{
+      width:100%;
+      border:1px solid #2a2c31;
+      border-radius:12px;
+      background:#e7e7e7;
+      color:#111;
+      padding: 14px 16px;
+      font-size:15px;
+      outline:none;
+      transition: border-color .2s ease, box-shadow .2s ease, background .2s ease;
+    }
+    .input:focus, .textarea:focus{
+      border-color:#3b82f6;
+      box-shadow: 0 0 0 3px rgba(59,130,246,.18);
+      background:#fff;
+    }
+    .textarea{ min-height: 150px; resize: vertical; }
+
+    .btn-submit{
+      display:inline-flex; align-items:center; justify-content:center;
+      height:52px; padding: 0 16px;
+      border-radius:14px;
+      background: var(--c-btn);
+      color:#e8eaed;
+      border:1px solid var(--c-border);
+      font-weight:700;
+      font-size:16px;
+      cursor:pointer;
+      transition: background .2s ease, transform .06s ease, box-shadow .2s ease;
+    }
+    .btn-submit:hover{ background: var(--c-btn-hover); }
+    .btn-submit:active{ transform: translateY(1px); }
+
+    .form-note{
+      font-size:12px;
+      color:var(--c-muted);
+      margin-top: 8px;
+    }
+
+    .success{
+      display:none;
+      margin-top:12px;
+      color:#9ae6b4;
+      font-size:14px;
+      font-weight:600;
+    }
+    .error{
+      display:none;
+      margin-top:12px;
+      color:#fca5a5;
+      font-size:14px;
+      font-weight:600;
+    }
+
+    @media (max-width: 920px){
+      .contact-grid{ grid-template-columns: 1fr; }
+      .contact-avatar{ order:2; }
+      .form-wrap{ order:1; }
+    }
+  </style>
+</head>
+
+<body class="contact-page">
+
+  <!-- Header fijo con Back + otros 3 botones -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <nav class="header-pills">
+        <a class="pill" href="/index.html">← Back</a>
+        <a class="pill" href="/aboutme.html">About Me</a>
+        <a class="pill" href="/#projects">Projects</a>
+        <a class="pill" href="/#skills">Skills</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="contact">
+    <p class="contact-kicker">CONTACT</p>
+    <h1 class="contact-title">Let’s Collaborate!</h1>
+    <p class="contact-lead">
+      If you have a project in mind or want to chat about UI/UX, prototyping or handoff, drop me a line.
+      I’ll get back to you as soon as possible.
+    </p>
+
+    <div class="contact-grid">
+      <!-- Círculo para tu foto -->
+      <div class="contact-avatar">
+        <!-- Reemplaza la ruta por tu foto (cuadrada de preferencia) -->
+        <img src="/public/assets/your-photo.jpg" alt="Antonio" />
+      </div>
+
+      <!-- Formulario -->
+      <div class="form-wrap">
+        <form class="contact-form"
+              action="https://formsubmit.co/antoniovaldiviapaz@gmail.com"
+              method="POST">
+          <!-- Anti-spam (honeypot) -->
+          <input type="text" name="_honey" style="display:none">
+          <!-- Desactiva captcha -->
+          <input type="hidden" name="_captcha" value="false">
+          <!-- Redirección después de enviar (cámbiala si quieres) -->
+          <input type="hidden" name="_next" value="https://tu-dominio.com/index.html#thanks">
+          <!-- Asunto del correo -->
+          <input type="hidden" name="_subject" value="New message from your Portfolio">
+          <!-- Plantilla de correo en tabla -->
+          <input type="hidden" name="_template" value="table">
+
+          <div class="form-row">
+            <label for="name">Name</label>
+            <input class="input" id="name" name="name" type="text" placeholder="Jane Doe" required>
+          </div>
+
+          <div class="form-row">
+            <label for="email">Email</label>
+            <input class="input" id="email" name="email" type="email" placeholder="jane@email.com" required>
+          </div>
+
+          <div class="form-row">
+            <label for="message">Message</label>
+            <textarea class="textarea" id="message" name="message" placeholder="Tell me about your idea…" required></textarea>
+          </div>
+
+          <button class="btn-submit" type="submit">Submit</button>
+
+          <p class="form-note">I’ll never share your information.</p>
+          <p class="success" id="successText">Thanks! Your message was sent.</p>
+          <p class="error"   id="errorText">Oops! There was a problem. Please try again.</p>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    /* Opcional: enviar sin salir de la página (AJAX)
+       Si prefieres redirigir a _next, elimina todo este <script>. */
+    (function(){
+      const form = document.querySelector('.contact-form');
+      const success = document.getElementById('successText');
+      const errorEl = document.getElementById('errorText');
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        success.style.display = 'none';
+        errorEl.style.display = 'none';
+
+        try{
+          const resp = await fetch(form.action, {
+            method: 'POST',
+            body: new FormData(form),
+            headers: { 'Accept': 'application/json' }
+          });
+          if (resp.ok) {
+            form.reset();
+            success.style.display = 'block';
+          } else {
+            errorEl.style.display = 'block';
+          }
+        } catch(err){
+          errorEl.style.display = 'block';
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
