@@ -84,18 +84,17 @@
       width: min(360px, 92%);
       aspect-ratio:1/1;
       border-radius:50%;
-      background: #ff7a2a;              /* el círculo naranja del mock */
+      background: transparent;              /* el círculo naranja del mock */
       box-shadow: 0 16px 40px rgba(0,0,0,.45);
       overflow:hidden;
       margin: clamp(6px, 2vw, 8px) auto;
-      border: 6px solid rgba(0,0,0,.22);
+      border: none;
     }
     .contact-avatar img{
-      width:86%; height:86%;
-      object-fit:cover;
-      border-radius:50%;
-      display:block;
-      filter: contrast(1.02);
+    width:100%;
+    height:100%;
+    border-radius:50%;
+    object-fit: cover;
     }
 
     /* Panel del formulario */
@@ -209,7 +208,7 @@
       <!-- Círculo para tu foto -->
       <div class="contact-avatar">
         <!-- Reemplaza la ruta por tu foto (cuadrada de preferencia) -->
-        <img src="/public/assets/your-photo.jpg" alt="Antonio" />
+        <img src="/assets/antonio.png" alt="Antonio" />
       </div>
 
       <!-- Formulario -->
