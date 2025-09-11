@@ -232,49 +232,40 @@ img{ max-width:100%; display:block; }
 }
 
 /* SKILLS & TOOLS */
-.skills{
-  background:#121314;
-  color:#fff;
-  padding:56px 0;
-}
-
 .skills-grid{
-  margin-top:24px;
   display:grid;
   gap:16px;
-  grid-template-columns: 1fr;                 /* móvil: 1 col */
+  grid-template-columns: 1fr; /* móvil */
 }
 
+/* tablet: 2 col */
 @media (min-width: 720px){
   .skills-grid{
     grid-template-columns: repeat(2, minmax(0,1fr));
   }
 }
 
-.skills-col{
-  background:#1a1b1d;
-  border-radius:20px;
-  padding:18px;
-  box-shadow:0 8px 20px rgba(0,0,0,.25);
+/* desktop: 3 col */
+@media (min-width: 980px){
+  .skills-grid{
+    grid-template-columns: repeat(3, minmax(0,1fr));
+    align-items:start;
+  }
 }
-.skills-col h3{
-  margin-top:0;
-  font-size:16px;
-  font-weight:700;
+
+/* cada columna ocupa 1 span, no se estira */
+.skills-grid > .skills-col{
+  grid-column: auto / span 1 !important;
+  min-width: 0;
+  max-width: 100%;
 }
-.skills-col ul{
-  margin:12px 0 0;
-  padding:0;
-  list-style:none;
-  display:grid;
-  gap:8px;
-}
-.skills-col li{
-  background:#2a2b2e;
-  border-radius:12px;
-  padding:6px 12px;
-  font-size:14px;
-}
+
+/* evita que el contenido fuerce ancho */
+.skills-col,
+.skills-col *{ max-width: 100%; }
+
+/* las barras/filas no expanden la columna */
+.skills-col .meter-list{ width: 100%; }
 
 /* PROJECT */
 .project{
