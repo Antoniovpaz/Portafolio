@@ -236,7 +236,7 @@ img{ max-width:100%; display:block; }
 .skills-grid{
   display:grid;
   gap:16px;
-  grid-template-columns: 1fr; /* móvil */
+  grid-template-columns: 1fr;     /* móvil */
 }
 
 /* tablet: 2 col */
@@ -249,8 +249,9 @@ img{ max-width:100%; display:block; }
 /* desktop: 3 col */
 @media (min-width: 980px){
   .skills-grid{
-    grid-template-columns: repeat(3, minmax(0,1fr));
-    align-items:start;
+    grid-template-columns: 1fr 1fr 1.2fr; /* 3 col; la 3ª un poco más ancha */
+    align-items:start;                    /* alinea la parte superior */
+    grid-auto-flow: dense;                /* ayuda a “empaquetar” */
   }
 }
 
