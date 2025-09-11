@@ -29,15 +29,16 @@
 </head>
 
 <script>
-  (function(){
+  document.addEventListener('DOMContentLoaded', () => {
     const h = document.querySelector('.site-header');
+    if (!h) return;
     const onScroll = () => {
       if (window.scrollY > 6) h.classList.add('is-scrolled');
       else h.classList.remove('is-scrolled');
     };
     onScroll();
-    window.addEventListener('scroll', onScroll, {passive:true});
-  })();
+    window.addEventListener('scroll', onScroll, { passive: true });
+  });
 </script>
 
 <body>
