@@ -201,83 +201,89 @@ document.querySelectorAll('a[href="/portafolio/upocket.html"]').forEach(link=>{
  * Slideshow del index (.intro-preview)
  * autoplay + dots + swipe
  **************************************/
+/****************************************
+ * Slideshow del index (.intro-preview)
+ * autoplay + dots + swipe
+ ****************************************/
 (function () {
-  const root = document.querySelector(".intro-preview");
+  const root = document.querySelector('.intro-preview');
   if (!root) return;
 
-  const canvas = root.querySelector(".preview-canvas");
-  const track  = root.querySelector(".preview-track");
-  const dots   = Array.from(root.querySelectorAll(".preview-dots .dot"));
-  if (!canvas || !track || !dots.length) return;
+  const canvas = root.querySelector('.preview-canvas');
+  const track  = root.querySelector('.preview-track');
+  const dots   = Array.from(root.querySelectorAll('.preview-dots .dot'));
+  if (!canvas || !track) return;
 
-  const slides = Array.from(track.children);
-  const max    = slides.length;
-  const interval = Number(root.dataset.interval) || 3800;
+  const slides   = Array.from(track.children);
+  const max      = slides.length;
+  const interval = Number(canvas.dataset.interval || root.dataset.interval) || 3500;
 
   let index = 0;
   let timer = null;
 
-  function setActiveDot(i){
-    dots.forEach((d,k)=>d.classList.toggle("is-active", k===i));
-  }
-  function goto(i, animate = true){
-    index = (i + max) % max;
-    track.style.transition = animate ? "transform .55s cubic-bezier(.22,.61,.36,1)" : "none";
-    track.style.transform  = `translateX(${ -index * 100 }%)`;
-    setActiveDot(index);
-  }
-  function start(){ stop(); timer = setInterval(()=>goto(index+1), interval); }
-  function stop(){ if (timer){ clearInterval(timer); timer=null; } }
+  const setActiveDot = () =>
+    dots.forEach((d,k) => d.classList.toggle('is-active', k === index));
 
-  // Dots click
-  dots.forEach((d,i)=>d.addEventListener("click", ()=>{
-    stop(); goto(i); start();
+  const go = (n, animate = true) => {
+    index = (n + max) % max;
+    track.style.transition = animate
+      ? 'transform .55s cubic-bezier(.22,.61,.36,1)'
+      : 'none';
+    track.style.transform = `translateX(-${index * 100}%)`;
+    setActiveDot();
+  };
+
+  const start = () => { stop(); timer = setInterval(() => go(index + 1), interval); };
+  const stop  = () => { if (timer) clearInterval(timer); timer = null; };
+
+  // Dots
+  dots.forEach((d,k) => d.addEventListener('click', () => {
+    stop(); go(k); start();
   }));
 
   // Swipe / drag
-  let startX = 0, currentX = 0, isDown = false;
+  let isDown = false, startX = 0, currentX = 0;
 
   const onStart = (x) => { isDown = true; startX = currentX = x; stop(); };
   const onMove  = (x) => {
     if (!isDown) return;
     currentX = x;
-    const dx = currentX - startX;
+    const dx      = currentX - startX;
     const percent = (dx / canvas.clientWidth) * 100;
-    const base = -index * 100;
-    track.style.transition = "none";
+    const base    = -index * 100;
+    track.style.transition = 'none';
     track.style.transform  = `translateX(${base + percent}%)`;
   };
-  const onEnd = () => {
+  const onEnd   = () => {
     if (!isDown) return;
     isDown = false;
     const dx = currentX - startX;
     if (Math.abs(dx) > canvas.clientWidth * 0.15) {
-      goto(index + (dx < 0 ? 1 : -1));
+      go(index + (dx < 0 ? 1 : -1));
     } else {
-      goto(index); // volver a su sitio
+      go(index);
     }
     start();
   };
 
-  // Pointer (mouse + touch modernos)
-  canvas.addEventListener("pointerdown", e => onStart(e.clientX));
-  window.addEventListener("pointermove",  e => onMove(e.clientX));
-  window.addEventListener("pointerup",    onEnd);
-  window.addEventListener("pointercancel",onEnd);
+  // Pointer (desktop y móviles modernos)
+  canvas.addEventListener('pointerdown',  e => onStart(e.clientX));
+  window.addEventListener('pointermove',  e => onMove(e.clientX));
+  window.addEventListener('pointerup',    onEnd);
+  window.addEventListener('pointercancel',onEnd);
 
-  // Compat touch iOS antiguos
-  canvas.addEventListener("touchstart", e => onStart(e.touches[0].clientX), {passive:true});
-  canvas.addEventListener("touchmove",  e => onMove(e.touches[0].clientX), {passive:true});
-  canvas.addEventListener("touchend",   onEnd);
+  // Touch (compat antiguo)
+  canvas.addEventListener('touchstart', e => onStart(e.touches[0].clientX), {passive:true});
+  window.addEventListener('touchmove',  e => onMove(e.touches[0].clientX),  {passive:true});
+  window.addEventListener('touchend',   onEnd);
+  window.addEventListener('touchcancel',onEnd);
 
-  // Init
-  goto(0, false);
+  // Pausa al hover
+  root.addEventListener('mouseenter', stop);
+  root.addEventListener('mouseleave', start);
+
+  go(0);
   start();
-
-  // Pausar si pestaña oculta
-  document.addEventListener("visibilitychange", ()=>{
-    if (document.hidden) stop(); else start();
-  });
 })();
 
 

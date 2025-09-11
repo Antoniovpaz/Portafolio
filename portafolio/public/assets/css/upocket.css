@@ -75,9 +75,9 @@
   align-items:center; padding:clamp(2rem, 4vw, 3rem) 0;
 }
 .up-page .cs-hero h1,
-.up-page .cs-hero p{ color:#111; }
+.up-page .cs-hero p{ color:#000000; }
 .up-page .cs-hero h1{ font-size:clamp(2rem,3.8vw,3rem); line-height:1.1; margin:0 0 .6rem; }
-.up-page .cs-hero p.lead{ color:#111; max-width:60ch; }
+.up-page .cs-hero p.lead{ color:#000000; max-width:60ch; }
 
 /* CTA / botones */
 .up-page .cs-cta{ display:flex; gap:.7rem; flex-wrap:wrap; }
@@ -86,7 +86,7 @@
   border-radius:999px; background:var(--upocket-accent); color:#fff;
   border:1px solid transparent; text-decoration:none;
 }
-.up-page .cs-btn.ghost{ background:transparent; color:#111; border-color:#111; }
+.up-page .cs-btn.ghost{ background:transparent; color:#000000; border-color:#000000; }
 .up-page .cs-btn.ghost:hover{ background:#111; color:#fff; }
 
 /* ===== Secciones oscuras (no tocadas) ===== */
