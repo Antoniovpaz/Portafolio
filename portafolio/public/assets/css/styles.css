@@ -237,11 +237,12 @@ img{ max-width:100%; display:block; }
   color:#fff;
   padding:56px 0;
 }
+
 .skills-grid{
   margin-top:24px;
   display:grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap:22px;
+  gap:16px;
+  grid-template-columns: 1fr;      /* <— cambia esto */
 }
 .skills-col{
   background:#1a1b1d;
@@ -380,9 +381,14 @@ img{ max-width:100%; display:block; }
 
 /* Responsive */
 @media(max-width: 950px){
-  .skills-grid{ grid-template-columns:1fr; }
+  .skills-grid{
+    grid-template-columns: repeat(3, 1fr);
+    align-items:start;
+  }
   .project-grid{ grid-template-columns:1fr; }
 }
+
+.skills-grid > *{ min-width:0; }
 
 /* === PROJECT full-bleed y paddings DEFINITIVOS === */
 .project .container.project-grid{
