@@ -202,7 +202,7 @@ img{ max-width:100%; display:block; }
   aspect-ratio: 16/9;
   border-radius:18px;
   background: radial-gradient(100% 60% at 80% 50%, #f3f4f8 0%, #e9ebf1 60%, #e4e6ed 100%);
-  display:grid; place-items:center; color:#656b78; font-size:13px;
+  color:#656b78; font-size:13px;
 }
 .preview-canvas::after{ content:none; } 
 
