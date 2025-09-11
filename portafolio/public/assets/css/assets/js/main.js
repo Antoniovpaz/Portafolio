@@ -293,7 +293,7 @@ document.querySelectorAll('a[href="/portafolio/upocket.html"]').forEach(link=>{
   if (!root) return;
 
   const track = root.querySelector('.pc-track');
-  const slides = Array.from(track.children);
+  const slides = Array.from(track.querySelectorAll('.pc-slide'));
   const dots   = Array.from(root.querySelectorAll('.pc-dots .dot'));
   const interval = Number(root.dataset.interval) || 5200;
 
