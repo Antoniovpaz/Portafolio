@@ -242,8 +242,15 @@ img{ max-width:100%; display:block; }
   margin-top:24px;
   display:grid;
   gap:16px;
-  grid-template-columns: 1fr;      /* <— cambia esto */
+  grid-template-columns: 1fr;                 /* móvil: 1 col */
 }
+
+@media (min-width: 720px){
+  .skills-grid{
+    grid-template-columns: repeat(2, minmax(0,1fr));
+  }
+}
+
 .skills-col{
   background:#1a1b1d;
   border-radius:20px;
@@ -380,15 +387,17 @@ img{ max-width:100%; display:block; }
 
 
 /* Responsive */
-@media(max-width: 950px){
+@media (min-width: 980px){
   .skills-grid{
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, minmax(0,1fr));
     align-items:start;
   }
-  .project-grid{ grid-template-columns:1fr; }
 }
 
-.skills-grid > *{ min-width:0; }
+.skills-grid > *{
+  grid-column:auto !important;
+  min-width:0;               /* corrige overflow por contenido largo */
+}
 
 /* === PROJECT full-bleed y paddings DEFINITIVOS === */
 .project .container.project-grid{
