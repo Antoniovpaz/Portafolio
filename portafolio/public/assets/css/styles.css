@@ -666,6 +666,3 @@ body {
 .project-carousel{ position:relative; overflow:hidden; }
 .pc-track{ display:flex; transition:transform .60s cubic-bezier(.22,.61,.36,1); }
 .pc-slide{ flex:0 0 100%; }
-
-.preview-canvas, .project-carousel { pointer-events: auto !important; }
-.preview-track, .pc-track { transform: translateX(0) !important; }

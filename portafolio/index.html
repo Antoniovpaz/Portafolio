@@ -16,69 +16,12 @@
     }
   </style>
 
-  <!-- NO cambiar esta ruta -->
-  <link rel="stylesheet" href="/assets/css/styles.css">
-
-    <!-- si la página tiene CSS propio -->
-    <link rel="stylesheet" href="/assets/css/aboutme.css">     <!-- en aboutme.html -->
-    <link rel="stylesheet" href="/assets/css/contact.css">     <!-- en contactme.html -->
-    <link rel="stylesheet" href="/assets/css/upocket.css">     <!-- en upocket.html -->
-
-    <!-- JS global -->
-    <script src="./assets/js/main.js" defer></script>
+  <!-- CSS -->
+  <link rel="stylesheet" href="./assets/css/styles.css">
+  <link rel="stylesheet" href="./assets/css/aboutme.css">
+  <link rel="stylesheet" href="./assets/css/contact.css">
+  <link rel="stylesheet" href="./assets/css/upocket.css">
 </head>
-
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const h = document.querySelector('.site-header');
-    if (!h) return;
-    const onScroll = () => {
-      if (window.scrollY > 6) h.classList.add('is-scrolled');
-      else h.classList.remove('is-scrolled');
-    };
-    onScroll();
-    window.addEventListener('scroll', onScroll, { passive: true });
-  });
-</script>
-
-<script>
-  console.log("¿main.js cargó?", window.__MAIN_LOADED__);
-</script>
-
-<script>
-  // Test del slider de fotos
-  (function(){
-    const root = document.querySelector('.intro-preview');
-    if (!root) return;
-    const track = root.querySelector('.preview-track');
-    const slides = track ? track.children.length : 0;
-    if (!track || slides < 2) return;
-
-    let i = 0;
-    setInterval(() => {
-      i = (i + 1) % slides;
-      track.style.transition = 'transform .55s cubic-bezier(.22,.61,.36,1)';
-      track.style.transform = `translateX(-${i * 100}%)`;
-    }, 2500);
-  })();
-
-  // Test del carrusel de proyectos
-  (function(){
-    const root = document.querySelector('.project-carousel');
-    if (!root) return;
-    const track = root.querySelector('.pc-track');
-    const slides = track ? track.children.length : 0;
-    if (!track || slides < 2) return;
-
-    let i = 0;
-    setInterval(() => {
-      i = (i + 1) % slides;
-      track.style.transition = 'transform .60s cubic-bezier(.22,.61,.36,1)';
-      track.style.transform = `translateX(-${i * 100}%)`;
-    }, 3000);
-  })();
-</script>
-
 
 <body>
   <!-- Header pills (View Work / LinkedIn / About Me) -->
@@ -86,16 +29,14 @@
     <div class="container header-inner">
       <nav class="header-pills">
         <a class="pill" href="#projects">View Work</a>
-        <a class="pill" href="https://www.linkedin.com/in/antoniovp-/" target="_blank" rel="noreferrer">
-          LinkedIn
-        </a>
+        <a class="pill" href="https://www.linkedin.com/in/antoniovp-/" target="_blank" rel="noreferrer">LinkedIn</a>
         <a class="pill" href="aboutme.html">About Me</a>
       </nav>
     </div>
   </header>
 
   <main>
-    <!-- HERO (lado izq. copy / lado der. glow con foto) -->
+    <!-- HERO -->
     <section class="hero">
       <div class="container hero-grid">
         <div class="hero-copy">
@@ -111,7 +52,7 @@
 
           <div class="hero-cta">
             <a class="btn btn-primary" href="#projects">View Work</a>
-            <a class="btn btn-ghost" href="/assets/CV.pdf" download>Download CV</a>
+            <a class="btn btn-ghost" href="./assets/CV.pdf" download>Download CV</a>
             <a class="btn btn-ghost" href="contactme.html">Contact Me</a>
           </div>
 
@@ -135,14 +76,14 @@
         <div class="hero-visual">
           <div class="glow">
             <div class="photo-slot">
-              <img src="/assets/antonio.png" alt="Antonio Valdivia portrait">
+              <img src="./assets/antonio.png" alt="Antonio Valdivia portrait">
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- STRIP inferior con 4 tarjetas + texto/preview -->
+    <!-- STRIP inferior -->
     <section class="intro-strip">
       <div class="container strip-inner">
         <div class="pill-cards">
@@ -180,170 +121,149 @@
           </div>
 
           <div class="intro-preview">
-            <!-- Carrusel -->
+            <!-- Carrusel de fotos -->
             <div class="preview-canvas" id="work-slides" data-interval="3500">
               <div class="preview-track">
-                <img src="/assets/upocket-hero.png"      alt="UPocket 1">
-                <img src="/assets/upocket-screen-2.png"  alt="UPocket 2">
-                <img src="/assets/upocket-screen-3.png"  alt="UPocket 3">
+                <img src="./assets/upocket-hero.png"     alt="UPocket 1">
+                <img src="./assets/upocket-screen-2.png" alt="UPocket 2">
+                <img src="./assets/upocket-screen-3.png" alt="UPocket 3">
               </div>
             </div>
 
             <!-- Dots -->
             <div class="preview-dots" role="tablist" aria-label="Preview">
-              <button class="dot is-active" aria-label="Slide 1" data-slide="0"></button>
-              <button class="dot"           aria-label="Slide 2" data-slide="1"></button>
-              <button class="dot"           aria-label="Slide 3" data-slide="2"></button>
+              <button class="dot is-active" aria-label="Slide 1"></button>
+              <button class="dot"           aria-label="Slide 2"></button>
+              <button class="dot"           aria-label="Slide 3"></button>
             </div>
           </div>
         </div>
       </div>
     </section>
   </main>
+
   <!-- SKILLS & TOOLS -->
-    <section class="skills">
-      <div class="container">
-        <h2 class="title">Skills &amp; Tools</h2>
+  <section class="skills">
+    <div class="container">
+      <h2 class="title">Skills &amp; Tools</h2>
 
-        <div class="skills-grid">
-          <!-- Col 1 -->
-          <div class="skills-col">
-            <h3>User-Centered Design</h3>
-            <ul>
-              <li>UI/UX Design</li>
-              <li>Prototyping</li>
-              <li>Design Systems</li>
-              <li>Modern Minimal Style</li>
-            </ul>
-          </div>
+      <div class="skills-grid">
+        <div class="skills-col">
+          <h3>User-Centered Design</h3>
+          <ul>
+            <li>UI/UX Design</li>
+            <li>Prototyping</li>
+            <li>Design Systems</li>
+            <li>Modern Minimal Style</li>
+          </ul>
+        </div>
 
-          <!-- Col 2 -->
-          <div class="skills-col">
-            <h3>Tools</h3>
-            <ul class="meter-list">
-              <li class="meter-row" style="--val:80; --brand:#F24E1E;">
-                <img class="meter-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/figma/figma-original.svg" alt="Figma">
-                <span class="meter-label">Figma</span>
-                <span class="meter-bar"></span>
-              </li>
+        <div class="skills-col">
+          <h3>Tools</h3>
+          <ul class="meter-list">
+            <li class="meter-row" data-skill="figma"        data-level="80">
+              <img class="meter-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/figma/figma-original.svg" alt="Figma">
+              <span class="meter-label">Figma</span>
+              <span class="meter-bar"></span>
+            </li>
+            <li class="meter-row" data-skill="illustrator"  data-level="70">
+              <img class="meter-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/illustrator/illustrator-original.svg" alt="Illustrator">
+              <span class="meter-label">Illustrator</span>
+              <span class="meter-bar"></span>
+            </li>
+            <li class="meter-row" data-skill="spline"       data-level="65">
+              <img class="meter-logo" src="./assets/icons/spline.svg" alt="Spline">
+              <span class="meter-label">Spline</span>
+              <span class="meter-bar"></span>
+            </li>
+            <li class="meter-row" data-skill="blender"      data-level="75">
+              <img class="meter-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/blender/blender-original.svg" alt="Blender">
+              <span class="meter-label">Blender</span>
+              <span class="meter-bar"></span>
+            </li>
+            <li class="meter-row" data-skill="maya"         data-level="60">
+              <img class="meter-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/maya/maya-original.svg" alt="Maya">
+              <span class="meter-label">Maya</span>
+              <span class="meter-bar"></span>
+            </li>
+            <li class="meter-row" data-skill="github"       data-level="90">
+              <img class="meter-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg" alt="GitHub">
+              <span class="meter-label">GitHub</span>
+              <span class="meter-bar"></span>
+            </li>
+            <li class="meter-row" data-skill="terminal"     data-level="85">
+              <img class="meter-logo" src="./assets/icons/terminal.svg" alt="Terminal">
+              <span class="meter-label">Terminal</span>
+              <span class="meter-bar"></span>
+            </li>
+            <li class="meter-row" data-skill="qt"           data-level="70">
+              <img class="meter-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/qt/qt-original.svg" alt="Qt">
+              <span class="meter-label">Qt (QtC / QtDS)</span>
+              <span class="meter-bar"></span>
+            </li>
+          </ul>
+        </div>
 
-              <li class="meter-row" style="--val:70; --brand:#FF9A00;">
-                <img class="meter-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/illustrator/illustrator-original.svg" alt="Illustrator">
-                <span class="meter-label">Illustrator</span>
-                <span class="meter-bar"></span>
-              </li>
-
-              <li class="meter-row" style="--val:65; --brand:#6E56CF;">
-                <img class="meter-logo" src="/assets/icons/spline.svg" alt="Spline">
-                <span class="meter-label">Spline</span>
-                <span class="meter-bar"></span>
-              </li>
-
-              <li class="meter-row" style="--val:75; --brand:#F5792A;">
-                <img class="meter-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/blender/blender-original.svg" alt="Blender">
-                <span class="meter-label">Blender</span>
-                <span class="meter-bar"></span>
-              </li>
-
-              <li class="meter-row" style="--val:60; --brand:#37A6B8;">
-                <img class="meter-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/maya/maya-original.svg" alt="Maya">
-                <span class="meter-label">Maya</span>
-                <span class="meter-bar"></span>
-              </li>
-
-              <li class="meter-row" style="--val:90; --brand:#181717;">
-                <img class="meter-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg" alt="GitHub">
-                <span class="meter-label">GitHub</span>
-                <span class="meter-bar"></span>
-              </li>
-
-              <li class="meter-row" style="--val:85; --brand:#10B981;">
-                <img class="meter-logo" src="/assets/icons/terminal.svg" alt="Terminal">
-                <span class="meter-label">Terminal</span>
-                <span class="meter-bar"></span>
-              </li>
-
-              <li class="meter-row" style="--val:70; --brand:#41CD52;">
-                <img class="meter-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/qt/qt-original.svg" alt="Qt">
-                <span class="meter-label">Qt (QtC / QtDS)</span>
-                <span class="meter-bar"></span>
-              </li>
-            </ul>
-          </div>
-
-          <!-- Col 3 (Code) -->
-          <div class="skills-col code-col">
-            <h3>Code</h3>
-            <ul class="meter-list">
-              <li class="meter-row" style="--val:85; --brand:#FA7343;">
-                <img class="meter-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/swift/swift-original.svg" alt="Swift">
-                <span class="meter-label">Swift / SwiftUI</span>
-                <span class="meter-bar"></span>
-              </li>
-
-              <li class="meter-row" data-skill="python" data-level="70">
-                <img class="meter-logo"
-                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg"
-                    alt="Python">
-                <span class="meter-label">Python</span>
-                <span class="meter-bar"></span>
-              </li>
-
-              <li class="meter-row" style="--val:70; --brand:#00599C;">
-                <img class="meter-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cplusplus/cplusplus-original.svg" alt="C++">
-                <span class="meter-label">C++</span>
-                <span class="meter-bar"></span>
-              </li>
-
-              <li class="meter-row" style="--val:65; --brand:#68217A;">
-                <img class="meter-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/csharp/csharp-original.svg" alt="C#">
-                <span class="meter-label">C#</span>
-                <span class="meter-bar"></span>
-              </li>
-
-              <li class="meter-row" style="--val:60; --brand:#A8B9CC;">
-                <img class="meter-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/c/c-original.svg" alt="C">
-                <span class="meter-label">C</span>
-                <span class="meter-bar"></span>
-              </li>
-
-              <li class="meter-row" style="--val:80; --brand:#E34F26;">
-                <img class="meter-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" alt="HTML">
-                <span class="meter-label">HTML</span>
-                <span class="meter-bar"></span>
-              </li>
-
-              <li class="meter-row" style="--val:80; --brand:#1572B6;">
-                <img class="meter-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg" alt="CSS">
-                <span class="meter-label">CSS</span>
-                <span class="meter-bar"></span>
-              </li>
-
-              <li class="meter-row" style="--val:75; --brand:#F7DF1E;">
-                <img class="meter-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" alt="JavaScript">
-                <span class="meter-label">JavaScript</span>
-                <span class="meter-bar"></span>
-              </li>
-            </ul>
-          </div>
-        </div><!-- /.skills-grid -->
-
+        <div class="skills-col code-col">
+          <h3>Code</h3>
+          <ul class="meter-list">
+            <li class="meter-row" data-skill="swift"        data-level="85">
+              <img class="meter-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/swift/swift-original.svg" alt="Swift">
+              <span class="meter-label">Swift / SwiftUI</span>
+              <span class="meter-bar"></span>
+            </li>
+            <li class="meter-row" data-skill="python"       data-level="70">
+              <img class="meter-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" alt="Python">
+              <span class="meter-label">Python</span>
+              <span class="meter-bar"></span>
+            </li>
+            <li class="meter-row" data-skill="cplusplus"    data-level="70">
+              <img class="meter-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cplusplus/cplusplus-original.svg" alt="C++">
+              <span class="meter-label">C++</span>
+              <span class="meter-bar"></span>
+            </li>
+            <li class="meter-row" data-skill="csharp"       data-level="65">
+              <img class="meter-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/csharp/csharp-original.svg" alt="C#">
+              <span class="meter-label">C#</span>
+              <span class="meter-bar"></span>
+            </li>
+            <li class="meter-row" data-skill="c"            data-level="60">
+              <img class="meter-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/c/c-original.svg" alt="C">
+              <span class="meter-label">C</span>
+              <span class="meter-bar"></span>
+            </li>
+            <li class="meter-row" data-skill="html"         data-level="80">
+              <img class="meter-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" alt="HTML">
+              <span class="meter-label">HTML</span>
+              <span class="meter-bar"></span>
+            </li>
+            <li class="meter-row" data-skill="css"          data-level="80">
+              <img class="meter-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg" alt="CSS">
+              <span class="meter-label">CSS</span>
+              <span class="meter-bar"></span>
+            </li>
+            <li class="meter-row" data-skill="javascript"   data-level="75">
+              <img class="meter-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" alt="JavaScript">
+              <span class="meter-label">JavaScript</span>
+              <span class="meter-bar"></span>
+            </li>
+          </ul>
+        </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    
   <!-- ===== PROJECTS (Carrusel) ===== -->
   <section id="projects" class="project">
     <div class="project-carousel" data-interval="5200">
       <div class="pc-track">
 
-        <!-- === SLIDE 1: UPocket === -->
+        <!-- SLIDE 1 -->
         <article class="pc-slide">
           <div class="container project-grid">
             <div class="project-visual">
               <div class="visual-canvas">
-                <img src="/assets/upocket-project.png" alt="UPocket project preview" class="vc-image">
-                <!-- tu mockup/imagen -->
+                <img src="./assets/upocket-project.png" alt="UPocket project preview" class="vc-image">
               </div>
               <div class="project-tags">
                 <span class="pill">iOS</span>
@@ -363,8 +283,7 @@
               </p>
               <p>
                 Upocket was made by students for students. With an intuitive and user-friendly
-                interface, you’ll always stay on top of your academic performance. Perfect
-                for those who want to optimize their university life and stay up to date at all times.
+                interface, you’ll always stay on top of your academic performance.
               </p>
               <div class="project-cta">
                 <a href="https://apps.apple.com/mx/app/upocket/id6736629315" class="btn btn-primary">App Store</a>
@@ -374,7 +293,7 @@
           </div>
         </article>
 
-        <!-- === SLIDE 2: EJEMPLO (duplica y rellena con tu proyecto 2) === -->
+        <!-- SLIDE 2 -->
         <article class="pc-slide">
           <div class="container project-grid">
             <div class="project-visual">
@@ -391,18 +310,18 @@
               <p>Detalles del objetivo, proceso, resultado…</p>
               <div class="project-cta">
                 <a href="#" class="btn btn-primary">Link</a>
-                <a href="/upocket.html" class="btn btn-primary">View Project →</a>
+                <a href="upocket.html" class="btn btn-primary">View Project →</a>
               </div>
             </div>
           </div>
         </article>
-        <!-- Agrega más <article class="pc-slide">…</article> si necesitas -->
+
       </div>
 
+      <!-- Dots -->
       <div class="pc-dots" role="tablist" aria-label="Projects">
-        <button class="dot is-active" data-i="0" aria-label="Project 1"></button>
-        <button class="dot"           data-i="1" aria-label="Project 2"></button>
-        <!-- Añade más si hay más slides -->
+        <button class="dot is-active" aria-label="Project 1"></button>
+        <button class="dot"           aria-label="Project 2"></button>
       </div>
     </div>
   </section>
@@ -418,7 +337,6 @@
           <li><a href="contactme.html">Contact</a></li>
         </ul>
       </div>
-
       <div class="footer-col">
         <h4>Contact</h4>
         <ul>
@@ -427,7 +345,6 @@
           <li><a href="https://www.linkedin.com/in/antoniovp-/" target="_blank">LinkedIn</a></li>
         </ul>
       </div>
-
       <div class="footer-col">
         <h4>Resources</h4>
         <ul>
@@ -442,5 +359,8 @@
       <p>© 2025 Antonio Valdivia — All rights reserved</p>
     </div>
   </footer>
+
+  <!-- JS global (al final) -->
+  <script src="./assets/js/main.js" defer></script>
 </body>
 </html>
