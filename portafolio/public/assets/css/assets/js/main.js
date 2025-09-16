@@ -65,8 +65,22 @@
     const start = () => { stop(); timer = setInterval(() => go(index + 1), interval); };
     const stop  = () => { if (timer) { clearInterval(timer); timer = null; } };
 
-    // Dots
-    dots.forEach((d, k) => d.addEventListener('click', () => { stop(); go(k); start(); }));
+    // Dots (click + teclado + ARIA)
+    dots.forEach((d, k) => {
+      d.setAttribute('role', 'button');
+      d.setAttribute('tabindex', '0');
+      d.setAttribute('aria-label', `Slide ${k + 1}`);
+
+      const goTo = () => { stop(); go(k); start(); };
+
+      d.addEventListener('click', goTo);
+      d.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          goTo();
+        }
+      });
+    });
 
     // Swipe / drag
     let down = false, sx = 0, cx = 0;
@@ -134,7 +148,22 @@
     const start = () => { stop(); timer = setInterval(() => goto(index + 1), interval); };
     const stop  = () => { if (timer) { clearInterval(timer); timer = null; } };
 
-    dots.forEach((d, k) => d.addEventListener('click', () => { stop(); goto(k); start(); }));
+    // Dots (click + teclado + ARIA)
+    dots.forEach((d, k) => {
+      d.setAttribute('role', 'button');
+      d.setAttribute('tabindex', '0');
+      d.setAttribute('aria-label', `Project ${k + 1}`);
+
+      const goTo = () => { stop(); goto(k); start(); };
+
+      d.addEventListener('click', goTo);
+      d.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          goTo();
+        }
+      });
+    });
 
     // Swipe
     let down = false, sx = 0, cx = 0;
