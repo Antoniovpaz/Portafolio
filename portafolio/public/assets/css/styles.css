@@ -665,3 +665,14 @@ body {
   font-size: 13px;
   color: #9a9da3;
 }
+
+/* intro (slider de fotos) */
+.preview-canvas { position: relative; overflow: hidden; }
+.preview-track  { display: flex; width: 100%; height: 100%; transition: transform .55s ease; }
+.preview-track > img { flex: 0 0 100%; width: 100%; height: 100%; object-fit: cover; }
+
+/* projects (carrusel) */
+.project-carousel { position: relative; overflow: hidden; }
+.pc-track { display: flex; transition: transform .6s ease; }
+.pc-slide { flex: 0 0 100%; }
+
