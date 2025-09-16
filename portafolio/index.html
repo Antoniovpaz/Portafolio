@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="/assets/css/upocket.css">     <!-- en upocket.html -->
 
     <!-- JS global -->
-    <script src="/assets/js/main.js" defer></script>
+    <script src="./assets/js/main.js" defer></script>
 </head>
 
 <script>
@@ -40,6 +40,45 @@
     window.addEventListener('scroll', onScroll, { passive: true });
   });
 </script>
+
+<script>
+  console.log("¿main.js cargó?", window.__MAIN_LOADED__);
+</script>
+
+<script>
+  // Test del slider de fotos
+  (function(){
+    const root = document.querySelector('.intro-preview');
+    if (!root) return;
+    const track = root.querySelector('.preview-track');
+    const slides = track ? track.children.length : 0;
+    if (!track || slides < 2) return;
+
+    let i = 0;
+    setInterval(() => {
+      i = (i + 1) % slides;
+      track.style.transition = 'transform .55s cubic-bezier(.22,.61,.36,1)';
+      track.style.transform = `translateX(-${i * 100}%)`;
+    }, 2500);
+  })();
+
+  // Test del carrusel de proyectos
+  (function(){
+    const root = document.querySelector('.project-carousel');
+    if (!root) return;
+    const track = root.querySelector('.pc-track');
+    const slides = track ? track.children.length : 0;
+    if (!track || slides < 2) return;
+
+    let i = 0;
+    setInterval(() => {
+      i = (i + 1) % slides;
+      track.style.transition = 'transform .60s cubic-bezier(.22,.61,.36,1)';
+      track.style.transform = `translateX(-${i * 100}%)`;
+    }, 3000);
+  })();
+</script>
+
 
 <body>
   <!-- Header pills (View Work / LinkedIn / About Me) -->

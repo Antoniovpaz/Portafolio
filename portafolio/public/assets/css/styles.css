@@ -491,23 +491,23 @@ body {
   background: rgba(18,19,21,.60);
 }
 
-/* Slideshow index (intro-preview) — con track */
+/* ===== Slider de fotos (intro) ===== */
 .preview-canvas{
   position: relative;
-  overflow: hidden;
-  border-radius: 18px;
+  overflow: hidden;     /* <- importante para recortar al deslizar */
+  border-radius: 18px;  /* puedes mantener tu radius */
 }
 
 .preview-track{
-  display: flex;
+  display: flex;        /* <- importante, una fila continua */
   width: 100%;
   height: 100%;
   transition: transform .55s cubic-bezier(.22,.61,.36,1);
   will-change: transform;
 }
 
-.preview-track img{
-  flex: 0 0 100%;
+.preview-track > img{
+  flex: 0 0 100%;       /* <- cada slide ocupa 100% del ancho visible */
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -515,27 +515,20 @@ body {
   -webkit-user-drag: none;
 }
 
-.preview-dots .dot.is-active{ background:#0e0f12; }
-
-/* ===== Carrusel de Proyectos (sección .project) ===== */
-.project { position: relative; }
-
+/* ===== Carrusel de Proyectos ===== */
 .project-carousel{
   position: relative;
-  overflow: hidden; /* importante para recortar la pista */
+  overflow: hidden;     /* <- recorta la pista */
 }
 
-/* --- TRACK --- */
 .pc-track{
-  display: flex;
-  width: 100%;                 /* <— ancho normal, sin var(--n) */
+  display: flex;        /* <- fila continua */
   transition: transform .60s cubic-bezier(.22,.61,.36,1);
   will-change: transform;
 }
 
-/* --- SLIDE --- */
 .pc-slide{
-  flex: 0 0 100%;              /* <— cada slide ocupa 100% del carrusel */
+  flex: 0 0 100%;       /* <- cada slide = 100% del carrusel */
 }
 
 /* Dots del carrusel (dentro de la tarjeta blanca) */
@@ -666,13 +659,13 @@ body {
   color: #9a9da3;
 }
 
-/* intro (slider de fotos) */
-.preview-canvas { position: relative; overflow: hidden; }
-.preview-track  { display: flex; width: 100%; height: 100%; transition: transform .55s ease; }
-.preview-track > img { flex: 0 0 100%; width: 100%; height: 100%; object-fit: cover; }
+.preview-canvas{ position:relative; overflow:hidden; }
+.preview-track{ display:flex; transition:transform .55s cubic-bezier(.22,.61,.36,1); }
+.preview-track > img{ flex:0 0 100%; }
 
-/* projects (carrusel) */
-.project-carousel { position: relative; overflow: hidden; }
-.pc-track { display: flex; transition: transform .6s ease; }
-.pc-slide { flex: 0 0 100%; }
+.project-carousel{ position:relative; overflow:hidden; }
+.pc-track{ display:flex; transition:transform .60s cubic-bezier(.22,.61,.36,1); }
+.pc-slide{ flex:0 0 100%; }
 
+.preview-canvas, .project-carousel { pointer-events: auto !important; }
+.preview-track, .pc-track { transform: translateX(0) !important; }
